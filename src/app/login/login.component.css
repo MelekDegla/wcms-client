@@ -1,0 +1,29 @@
+
+
+.login{
+  background: url("/assets/backlogin.png")  ;
+  background-size: cover;
+  height: 100vh;
+  margin-top: 0;
+
+}
+
+.cardlogin{
+  padding: 25px;
+  height: 35vh;
+  width: 20vw;
+  background-color: rgba(255, 255, 255, 0.62);
+  margin-left: 2vw;
+}
+
+.cardlogin > mat-card-title{
+  color: #7c09bf;
+  font-size: 30px;
+  text-align: center;
+}
+.cardlogin > * > mat-card-content{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 15px
+}
