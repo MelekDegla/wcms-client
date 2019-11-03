@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
   signin() {
     this.authService.authenticate(this.login).subscribe(res => {
       console.log(res);
-      this.router.navigateByUrl('/projects');
       // @ts-ignore
       localStorage.token = res.token;
+      this.router.navigateByUrl('/dashboard');
       this.userService.findUserWithToken().subscribe(result => {
         console.log(result);
       });

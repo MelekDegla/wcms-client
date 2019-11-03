@@ -10,8 +10,8 @@ import {Observable} from 'rxjs';
 export class UserService {
   baseUrl = environment.webservice.baseUrl;
   private headers: HttpHeaders;
-  private http: HttpClient;
-  constructor( ) { }
+
+  constructor(   private http: HttpClient) { }
 
 
   public findUserWithToken() {
