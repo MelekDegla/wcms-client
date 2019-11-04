@@ -25,6 +25,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RemoveProjectComponent } from './projects/remove-project/remove-project.component';
 import { ModifyProjectComponent } from './projects/modify-project/modify-project.component';
 import { UsersComponent } from './users/users.component';
+import { ModifyUserComponent } from './users/modify-user/modify-user.component';
+import { RemoveUserComponent } from './users/remove-user/remove-user.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { UsersComponent } from './users/users.component';
     ScrumboardComponent,
     RemoveProjectComponent,
     ModifyProjectComponent,
-    UsersComponent
+    UsersComponent,
+    ModifyUserComponent,
+    RemoveUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

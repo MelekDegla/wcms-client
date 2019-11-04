@@ -1,1 +1,7 @@
-<p>users works!</p>
+<ul class="col-4" style="padding: 10px" *ngFor="let user of  users">
+  <li>{{user.username}}</li>
+  <li> {{user.salary}} </li>
+   <li>  {{user.age}} </li>
+  <button mat-button (click)="openDialogRemove(project.id)">supprimer</button>
+  <button mat-button (click)="openDialogModify(project.id)">modify</button>
+</ul>
