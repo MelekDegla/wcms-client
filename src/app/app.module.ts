@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -64,10 +64,12 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     MatListModule,
     NgbModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
+    MatTableModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
-  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent]
+  // tslint:disable-next-line:max-line-length
+  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent]
 })
 export class AppModule { }

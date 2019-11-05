@@ -10,14 +10,14 @@ import {ProjectService} from "../../services/project/project.service";
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  user : User;
-  constructor(private userService :UserService, public dialogRef: MatDialogRef<AddUserComponent>) { }
+  user: User;
+  constructor(private userService: UserService, public dialogRef: MatDialogRef<AddUserComponent>) { }
 
   ngOnInit() {
     this.user = new User();
   }
-  add(){
-    this.userService.add(this.user).subscribe(res=>{
+  add() {
+    this.userService.add(this.user).subscribe(res => {
       console.log(res);
       this.dialogRef.close();
       });

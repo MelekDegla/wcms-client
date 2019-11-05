@@ -1,7 +1,31 @@
-<ul class="col-4" style="padding: 10px" *ngFor="let user of  users">
-  <li>{{user.username}}</li>
-  <li> {{user.salary}} </li>
-   <li>  {{user.age}} </li>
-  <button mat-button (click)="openDialogRemove(project.id)">supprimer</button>
-  <button mat-button (click)="openDialogModify(project.id)">modify</button>
-</ul>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef> User Name </th>
+    <td mat-cell *matCellDef="let user"> {{ user.username }} </td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Age </th>
+    <td mat-cell *matCellDef="let user"> {{user.age}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="salary">
+    <th mat-header-cell *matHeaderCellDef> Salary </th>
+    <td mat-cell *matCellDef="let element"> {{ element.salary }} </td>
+  </ng-container>
+  <!-- Kamel lena -->
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let user">
+      <button mat-button (click)="openDialogRemove(user.id)"> Supprimer </button>
+      <button mat-button (click)="openDialogModify(user.id)"> Modifier </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

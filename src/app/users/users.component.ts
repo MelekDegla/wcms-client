@@ -2,16 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {User} from '../models/User';
 import {UserService} from '../services/user/user.service';
-import {RemoveUserComponent} from '../users/remove-user/remove-user.component';
-import {ModifyUserComponent} from '../users/modify-user/modify-user.component';
+import {RemoveUserComponent} from './remove-user/remove-user.component';
+import {ModifyUserComponent} from './modify-user/modify-user.component';
 import {AddUserComponent} from './add-user/add-user.component';
+import {MatTableDataSource} from '@angular/material';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
+
 export class UsersComponent implements OnInit {
-  users: [User];
+  users: User[];
+  displayedColumns: string[] = ['username', 'age', 'salary', 'Actions'];
+  dataSource = new MatTableDataSource(this.users);
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   openDialog(): void {
@@ -53,10 +58,17 @@ export class UsersComponent implements OnInit {
 
 
   ngOnInit() {
-  this.userService.list().subscribe(res=>{
-    this.users = res ;
-    console.log(this.users);
+    this.loadUser();
+  }
+  loadUser() {
+    this.userService.list().subscribe(list => {
+      this.users = list;
+      this.dataSource = new MatTableDataSource<User>(this.users);
     });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
