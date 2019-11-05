@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -25,6 +25,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RemoveProjectComponent } from './projects/remove-project/remove-project.component';
 import { ModifyProjectComponent } from './projects/modify-project/modify-project.component';
 import { UsersComponent } from './users/users.component';
+import { ModifyUserComponent } from './users/modify-user/modify-user.component';
+import { RemoveUserComponent } from './users/remove-user/remove-user.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { UsersComponent } from './users/users.component';
     ScrumboardComponent,
     RemoveProjectComponent,
     ModifyProjectComponent,
-    UsersComponent
+    UsersComponent,
+    ModifyUserComponent,
+    RemoveUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +64,12 @@ import { UsersComponent } from './users/users.component';
     MatListModule,
     NgbModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
+    MatTableModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
-  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent]
+  // tslint:disable-next-line:max-line-length
+  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent]
 })
 export class AppModule { }

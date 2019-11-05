@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Add user</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%">
+    <mat-label>user name</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="user.username">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>age</mat-label>
+    <input matInput style="width: 100%" [(ngModel)]="user.age">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>Salaire</mat-label>
+    <input matInput style="width: 100%" [(ngModel)]="user.salary">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button >No Thanks</button>
+  <button mat-flat-button   (click)="add()">Ok</button>
+</div>
