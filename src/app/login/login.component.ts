@@ -62,13 +62,15 @@ export class LoginComponent implements OnInit {
       localStorage.token = res.token;
       this.router.navigateByUrl('/dashboard');
       this.userService.findUserWithToken().subscribe(result => {
-        console.log(result);
+        // @ts-ignore
+        localStorage.username = result.username;
       });
     }, err => {
       this.shakeMe('state1');
     });
   }
   ngOnInit() {
+    this.router.navigateByUrl('/');
     this.login = new Login();
 
   }

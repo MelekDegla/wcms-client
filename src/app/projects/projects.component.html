@@ -11,14 +11,21 @@
 
     <div class="col-4" style="padding: 10px" *ngFor="let project of projects">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{project.name}}</mat-card-title>
-          <button mat-button (click)="openDialogRemove(project.id)">supprimer</button>
-          <button mat-button (click)="openDialogModify(project.id)">modify</button>
+        <mat-card-header style="width: 100%">
+          <mat-card-title style="text-align: center; width: 100%">{{project.name}}</mat-card-title>
+
         </mat-card-header>
-        <mat-card-content>
-          {{project.description}}
-        </mat-card-content>
+
+
+        <mat-card-actions align="end" style="padding-right: 15px; display: flex; justify-content: space-between">
+          <span>
+
+          <button mat-icon-button (click)="openDialogModify(project.id)"><mat-icon color="primary">edit</mat-icon></button>
+          <button mat-icon-button (click)="openDialogRemove(project.id)"><mat-icon color="warn">delete</mat-icon></button>
+
+          </span>
+          <button mat-flat-button color="primary" [routerLink]="['scrumboard', project.id]"> View <mat-icon>visibility</mat-icon></button>
+        </mat-card-actions>
       </mat-card>
     </div>
 

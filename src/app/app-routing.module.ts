@@ -5,6 +5,7 @@ import {ProjectsComponent} from './projects/projects.component';
 import {NavComponent} from './nav/nav.component';
 import {ScrumboardComponent} from './scrumboard/scrumboard.component';
 import {UsersComponent} from './users/users.component';
+import {DashboardGuard} from './guards/dashboard.guard';
 
 
 const routes: Routes = [{
@@ -13,13 +14,14 @@ const routes: Routes = [{
  }, {
   path: 'dashboard',
   component: NavComponent,
+  canActivate: [DashboardGuard],
   data: {animation: 'isRight'},
   children: [{
     path: '',
     component: ProjectsComponent
   },
     {
-      path: 'scrumboard',
+      path: 'scrumboard/:id',
       component: ScrumboardComponent
     }, {
       path: 'users',
