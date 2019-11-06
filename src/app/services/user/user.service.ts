@@ -20,7 +20,7 @@ export class UserService {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
     return this.http.get(this.baseurl + 'auth', { headers : this.headers});
   }
-  add(user : User){
+  add(user: User) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
     return this.http.post(this.baseurl + 'users', user, {
       headers: this.headers
