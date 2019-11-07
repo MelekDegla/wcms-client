@@ -16,3 +16,47 @@
   top: 0;
   z-index: 1;
 }
+
+.iconContainer, .icon, .iconName
+{
+  display: inline-block;
+}
+
+.material-icons{
+  font-size: 1.6rem;
+}
+
+.icon
+{
+  padding-right: 20px;
+}
+
+mat-nav-list a
+{
+  color: #8d97ad;
+}
+
+mat-nav-list a .iconName
+{
+  font-family: bebas, serif;
+  font-size: 1.1rem;
+}
+
+mat-toolbar
+{
+  background: #0a3d62!important;
+}
+
+.sidenav
+{
+  background: #0a3d62;
+  border-color: #0a3d62;
+}
+
+#logo
+{
+  color: white;
+  font-size: 30px;
+  font-weight: lighter;
+  font-family: bebas, serif;
+}

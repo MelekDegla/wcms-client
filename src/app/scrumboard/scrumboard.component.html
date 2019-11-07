@@ -1,72 +1,180 @@
-<mat-card style="margin:50px; min-height: 70%">
-  <mat-card-header>
-    <mat-card-title>{{projectName}}</mat-card-title>
-  </mat-card-header>
-  <div cdkDropListGroup class="container-fluid">
-    <div class="example-container col-2">
-      <h2>To Do</h2>
+<div class="ScrumBoardContainer">
+  <div class="row ScrumBoardRow">
+    <div class="col ScrumBoardCol">
 
-      <div
-        cdkDropList
-        [cdkDropListData]="todo"
-        class="example-list"
-        id="todo"
+     <mat-card class="mat-card-container">
+       <mat-card-header>
+         <mat-card-title>Things To Do</mat-card-title>
+       </mat-card-header>
+       <mat-card-content class="mat-card-tasks">
 
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.label}}</div>
-      </div>
+         <mat-card>
+           <mat-card-title>User story 1</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 2</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 3</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 4</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 5</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 6</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+       </mat-card-content>
+     </mat-card>
+
     </div>
 
-    <div class="example-container col-2">
-      <h2>In Progress</h2>
+   <div class="col ScrumBoardCol">
+     <mat-card class="mat-card-container">
+       <mat-card-header>
+         <mat-card-title>Doing</mat-card-title>
+       </mat-card-header>
+       <mat-card-content class="mat-card-tasks">
+         <mat-card>
+           <mat-card-title>User story 1</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
 
-      <div
-        cdkDropList
-        id="inprogress"
+         <mat-card>
+           <mat-card-title>User story 2</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
 
-        [cdkDropListData]="inprogress"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item.label}}</div>
-      </div>
+         <mat-card>
+           <mat-card-title>User story 3</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+         <mat-card>
+           <mat-card-title>User story 4</mat-card-title>
+           <mat-card-content>Hello My Name is Degla</mat-card-content>
+         </mat-card>
+
+       </mat-card-content>
+     </mat-card>
+   </div>
+
+    <div class="col ScrumBoardCol">
+      <mat-card class="mat-card-container">
+        <mat-card-header>
+          <mat-card-title>Doing</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-tasks">
+          <mat-card>
+            <mat-card-title>User story 1</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 2</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 3</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+        </mat-card-content>
+      </mat-card>
     </div>
-    <div class="example-container col-2" >
-      <h2>To Verify</h2>
 
-      <div
-        cdkDropList
-        [cdkDropListData]="toverify"
-        id="toverify"
+    <div class="col ScrumBoardCol">
+      <mat-card class="mat-card-container">
+        <mat-card-header>
+          <mat-card-title>Done</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-tasks">
 
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of toverify" cdkDrag>{{item.label}}</div>
-      </div>
+          <mat-card>
+            <mat-card-title>User story 1</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 2</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 3</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 4</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 5</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 6</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+        </mat-card-content>
+      </mat-card>
     </div>
-    <div class="example-container col-2" >
-      <h2>Done</h2>
 
-      <div
-        cdkDropList
-        [cdkDropListData]="done"
-        class="example-list"
-        id="done"
+    <div class="col ScrumBoardCol">
+      <mat-card class="mat-card-container">
+        <mat-card-header>
+          <mat-card-title>Problems</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-tasks">
 
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.label}}</div>
-      </div>
+        <mat-card>
+            <mat-card-title>User story 1</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-title>User story 2</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+        </mat-card-content>
+      </mat-card>
     </div>
-    <div class="example-container col-2">
-      <h2>Problems</h2>
 
-      <div
-        cdkDropList
-        [cdkDropListData]="problems"
-        id="problems"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of problems" cdkDrag>{{item.label}}</div>
-      </div>
+    <div class="col ScrumBoardCol">
+      <mat-card class="mat-card-container">
+        <mat-card-header>
+          <mat-card-title>Actions</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-tasks">
+
+          <mat-card>
+            <mat-card-title>User story 1</mat-card-title>
+            <mat-card-content>Hello My Name is Degla</mat-card-content>
+          </mat-card>
+
+        </mat-card-content>
+      </mat-card>
     </div>
+
   </div>
-</mat-card>
+</div>

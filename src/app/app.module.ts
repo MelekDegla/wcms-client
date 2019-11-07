@@ -28,6 +28,7 @@ import { UsersComponent } from './users/users.component';
 import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { NavMainComponent } from './nav-main/nav-main.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     UsersComponent,
     ModifyUserComponent,
     RemoveUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    NavMainComponent,
   ],
   imports: [
     BrowserModule,
