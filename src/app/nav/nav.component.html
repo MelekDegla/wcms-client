@@ -41,14 +41,24 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" style="display: flex; justify-content: space-between">
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()">
+        (click)="drawer.toggle()"
+        matTooltip="menu open/close"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <div>
+
+
+        <button mat-button [matMenuTriggerFor]="menu"> <mat-icon>person</mat-icon> <span>{{username}}</span></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
     </mat-toolbar>
    <router-outlet></router-outlet>
   </mat-sidenav-content>
