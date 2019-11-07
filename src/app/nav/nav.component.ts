@@ -10,6 +10,7 @@ import {UserService} from '../services/user/user.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
+
 export class NavComponent implements OnInit {
   username = localStorage.username;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
