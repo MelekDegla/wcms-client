@@ -3,6 +3,12 @@ export class User {
   username: string;
   password: string;
   salary: number;
-  age: number;
+  birthdate: string;
+  address: string;
+  leaveBalance: number;
+  cin: string;
+  email: string;
+  roles: string[];
+
   constructor() {  }
 }

@@ -38,7 +38,7 @@
 }
 
 .cdk-drag-placeholder {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 .cdk-drag-animating {
@@ -57,3 +57,41 @@ h2{
   text-align: center;
   color: #7c09bf;
 }
+
+.ScrumBoardContainer
+{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.mat-card-container
+{
+  background: rgba(0,0,0,.06);
+  padding: 12px 8px 9px 8px;
+}
+
+.mat-card-container mat-card-title
+{
+  font-size: 1.1rem;
+}
+
+mat-card mat-card mat-card-title
+{
+  font-size: 0.8rem;
+}
+ mat-card mat-card-title
+{
+  font-size: 0.8rem;
+}
+
+.mat-card-tasks mat-card
+{
+  margin-top: 6px;
+
+}
+
+.mat-card-tasks{
+  min-height: 50px;
+}
+
+

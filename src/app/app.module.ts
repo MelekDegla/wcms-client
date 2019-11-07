@@ -5,7 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatTableModule} from '@angular/material';
+import {
+  MAT_DATE_LOCALE,
+  MatButtonModule,
+  MatCardModule, MatDatepickerModule,
+  MatDialogModule,
+  MatIconModule,
+  MatInputModule, MatNativeDateModule,
+  MatTableModule,
+  MatTooltipModule, NativeDateModule
+} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -65,9 +74,14 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     NgbModule,
     MatDialogModule,
     DragDropModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+  {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+],
   bootstrap: [AppComponent],
   // tslint:disable-next-line:max-line-length
   entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent]

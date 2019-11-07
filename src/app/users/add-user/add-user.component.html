@@ -1,12 +1,29 @@
 <h1 mat-dialog-title>Add user</h1>
 <div mat-dialog-content>
   <mat-form-field style="width: 100%">
-    <mat-label>user name</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="user.username">
+    <mat-label>cin</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="user.cin">
   </mat-form-field>
   <mat-form-field style="width: 100%">
-    <mat-label>age</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="user.age">
+    <mat-label>user name</mat-label>
+    <input matInput required [(ngModel)]="user.username">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>email</mat-label>
+    <input matInput style="width: 100%" [(ngModel)]="user.email">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <input matInput [matDatepicker]="picker" placeholder="Birthdate" [(ngModel)]="user.birthdate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>leave balance</mat-label>
+    <input matInput type="number" style="width: 100%" [(ngModel)]="user.leaveBalance">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>address</mat-label>
+    <input matInput style="width: 100%" [(ngModel)]="user.address">
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>Salaire</mat-label>

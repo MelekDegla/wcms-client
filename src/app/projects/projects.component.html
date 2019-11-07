@@ -1,10 +1,9 @@
 
 <mat-card style="margin: 50px; height: 70%">
-<mat-card-header style="display: flex; justify-content: space-between; ">
+<mat-card-header >
   <mat-card-title>
     Projects
   </mat-card-title>
-  <button mat-fab color="primary" (click)="openDialog()"> <mat-icon>add</mat-icon> </button>
 </mat-card-header>
   <hr>
   <mat-card-content  style="display: flex; flex-wrap: wrap">
@@ -20,14 +19,20 @@
         <mat-card-actions align="end" style="padding-right: 15px; display: flex; justify-content: space-between">
           <span>
 
-          <button mat-icon-button (click)="openDialogModify(project.id)"><mat-icon color="primary">edit</mat-icon></button>
-          <button mat-icon-button (click)="openDialogRemove(project.id)"><mat-icon color="warn">delete</mat-icon></button>
+          <button mat-icon-button matTooltip="edit  {{project.name}}" (click)="openDialogModify(project.id)"><mat-icon color="primary">edit</mat-icon></button>
+          <button mat-icon-button matTooltip="remove {{project.name}}" (click)="openDialogRemove(project.id)"><mat-icon color="warn">delete</mat-icon></button>
 
           </span>
-          <button mat-flat-button color="primary" [routerLink]="['scrumboard', project.id]"> View <mat-icon>visibility</mat-icon></button>
+          <button mat-flat-button matTooltip="open scrum board of  {{project.name}}" color="primary" [routerLink]="['scrumboard', project.id]"> View <mat-icon>visibility</mat-icon></button>
         </mat-card-actions>
       </mat-card>
     </div>
+    <div class="col-4" style="padding: 10px; " >
+      <mat-card matTooltip="add project" style="text-align: center; padding: 33px 0 33px 0;background: rebeccapurple" (click)="openDialog()">
+        <mat-icon style="color: white; font-size: 42px">add</mat-icon>
+      </mat-card>
+    </div>
+
 
 
   </mat-card-content>

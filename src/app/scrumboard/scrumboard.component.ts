@@ -19,6 +19,7 @@ export class ScrumboardComponent implements OnInit {
   toverify: [Task];
   done: [Task];
   problems: [Task];
+  actions: [Task];
   ob: Observable<any>;
   task;
   constructor(private projectService: ProjectService, private actR: ActivatedRoute, private taskService: TaskService) {
@@ -37,6 +38,7 @@ export class ScrumboardComponent implements OnInit {
         case 'toverify': this.task = event.container.data[event.currentIndex]; this.task.status = 3;  break;
         case 'done': this.task = event.container.data[event.currentIndex]; this.task.status = 4;  break;
         case 'problems': this.task = event.container.data[event.currentIndex]; this.task.status = 0;  break;
+        case 'actions': this.task = event.container.data[event.currentIndex]; this.task.status = 5;  break;
       }
       this.task.project = new Project();
       this.task.project.id = this.actR.snapshot.params.id;
@@ -57,6 +59,8 @@ export class ScrumboardComponent implements OnInit {
       this.done = res.tasks.filter( t => t.status === 4);
       // @ts-ignore
       this.toverify = res.tasks.filter( t => t.status === 3);
+      // @ts-ignore
+      this.actions = res.tasks.filter( t => t.status === 5);
     });
   }
 
