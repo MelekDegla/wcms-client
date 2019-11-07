@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit, AfterViewInit{
+export class NavComponent implements OnInit, AfterViewInit {
   username = localStorage.username;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

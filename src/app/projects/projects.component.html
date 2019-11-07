@@ -27,10 +27,14 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="col-4" style="padding: 10px; " >
-      <mat-card matTooltip="add project" style="text-align: center; padding: 33px 0 33px 0;background: rebeccapurple" (click)="openDialog()">
-        <mat-icon style="color: white; font-size: 42px">add</mat-icon>
-      </mat-card>
+    <div class="col-4">
+      <div>
+        <mat-card matTooltip="add project" class="text-center" style="padding: 33px 0 33px 0;" (click)="openDialog()">
+          <button mat-fab color="primary">
+            <mat-icon style="color: white; font-size: 24px;">add </mat-icon>
+          </button>
+        </mat-card>
+      </div>
     </div>
 
 
