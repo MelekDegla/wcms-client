@@ -62,6 +62,7 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     FormsModule,
     MatButtonModule,
     HttpClientModule,
