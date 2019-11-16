@@ -13,6 +13,8 @@ import {UserService} from '../services/user/user.service';
 
 export class NavComponent implements OnInit {
   username = localStorage.username;
+  classlist1 = [];
+  classlist2 = ['list-item' , 'd-flex', 'justify-content-center'];
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -20,7 +22,11 @@ export class NavComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userService: UserService) {}
+clicked(id, idr) {
+    document.getElementById(id).classList.add('active');
+    document.getElementById(idr).classList.remove('active');
 
+}
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
