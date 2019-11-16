@@ -39,6 +39,7 @@ import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
 import {ModifyTaskComponent} from "./scrumboard/modify-task/modify-task.component";
+import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {ModifyTaskComponent} from "./scrumboard/modify-task/modify-task.componen
     RemoveUserComponent,
     AddUserComponent,
     AddTaskComponent,
-    ModifyTaskComponent
+    ModifyTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +95,8 @@ import {ModifyTaskComponent} from "./scrumboard/modify-task/modify-task.componen
     AddUserComponent,
     ModifyUserComponent,
     RemoveUserComponent,
-  AddTaskComponent]
+  AddTaskComponent,
+  ModifyTaskComponent,
+  DeleteTaskComponent]
 })
 export class AppModule { }
