@@ -9,6 +9,9 @@ import {Project} from '../models/Project';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
+import {AddProjectComponent} from '../projects/add-project/add-project.component';
+import {MatDialog} from '@angular/material';
+import {AddTaskComponent} from './add-task/add-task.component';
 
 @Component({
   selector: 'app-scrumboard',
@@ -30,7 +33,8 @@ export class ScrumboardComponent implements OnInit {
   isLoaded = false;
   isCustomSocketOpened = false;
 
-  constructor(private projectService: ProjectService, private actR: ActivatedRoute, private taskService: TaskService) {
+  constructor(private projectService: ProjectService, private actR: ActivatedRoute,
+              private taskService: TaskService, private dialog: MatDialog) {
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -89,6 +93,19 @@ export class ScrumboardComponent implements OnInit {
     openGlobalSocket() {
     this.stompClient.subscribe('/socket-front-project', (res) => {
       this.orderTasks(JSON.parse(res.body));
+    });
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '400px',
+      data: {
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
     });
   }
 
