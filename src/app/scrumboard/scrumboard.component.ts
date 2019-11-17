@@ -9,6 +9,10 @@ import {Project} from '../models/Project';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
+import {AddTaskComponent} from './add-task/add-task.component';
+import {MatDialog} from "@angular/material";
+import {ModifyTaskComponent} from "./modify-task/modify-task.component";
+import {DeleteTaskComponent} from "./delete-task/delete-task.component";
 
 @Component({
   selector: 'app-scrumboard',
@@ -30,7 +34,10 @@ export class ScrumboardComponent implements OnInit {
   isLoaded = false;
   isCustomSocketOpened = false;
 
-  constructor(private projectService: ProjectService, private actR: ActivatedRoute, private taskService: TaskService) {
+  constructor(private projectService: ProjectService,
+              private actR: ActivatedRoute,
+              private taskService: TaskService,
+              private dialog: MatDialog) {
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -52,6 +59,46 @@ export class ScrumboardComponent implements OnInit {
       this.task.project.id = this.actR.snapshot.params.id;
       this.taskService.add(this.task).subscribe();
       }
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '400px',
+      data: {
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
+  openDialogModify(id): void {
+    const dialogRef = this.dialog.open(ModifyTaskComponent, {
+      width: '400px',
+      data: {
+        id,
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
+  openDialogDelete(id): void {
+    const dialogRef = this.dialog.open(DeleteTaskComponent, {
+      width: '400px',
+      data: {
+        id,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
   }
 
   ngOnInit() {
