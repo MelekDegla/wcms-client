@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Task} from '../../models/Task';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {TaskService} from '../../services/task/task.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Project} from '../../models/Project';
 
 @Component({
   selector: 'app-add-task',
@@ -11,20 +10,26 @@ import {Project} from '../../models/Project';
 })
 export class AddTaskComponent implements OnInit {
 
-  task: Task = new Task();
-  constructor(private taskService: TaskService, private dialogRef: MatDialogRef<AddTaskComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: any) { }
+  task: Task;
+  constructor(private taskService: TaskService, private dialogRef: MatDialogRef<AddTaskComponent>, @Inject(MAT_DIALOG_DATA) private data: any) {
+  }
+
   save() {
     this.task.status = 1;
-    this.task.project = new Project();
-    this.task.project.id = this.data.id;
-    this.taskService.add(this.task).subscribe(r => {
+    // @ts-ignore
+    this.task.project = {id: this.data.idproject};
+    this.taskService.add(this.task).subscribe(res => {
+      console.log(res);
       this.dialogRef.close();
+
     });
   }
+
+
+
+
   ngOnInit() {
     this.task = new Task();
-    console.log(this.data);
   }
 
 }

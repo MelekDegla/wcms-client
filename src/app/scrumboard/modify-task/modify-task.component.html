@@ -1,1 +1,16 @@
-<p>modify-task works!</p>
+<h1 mat-dialog-title>Modify Task</h1>
+<div mat-dialog-content>
+  <mat-form-field style="width: 100%">
+    <mat-label>name</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="task.label">
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>description</mat-label>
+    <input matInput style="width: 100%" [(ngModel)]="task.description">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button >No Thanks</button>
+  <button mat-flat-button (click)="save()"  >Ok</button>
+</div>
+

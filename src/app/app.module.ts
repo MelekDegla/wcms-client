@@ -37,8 +37,9 @@ import { UsersComponent } from './users/users.component';
 import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
-import {AddTaskComponent} from './scrumboard/add-task/add-task.component';
-import { ModifyTaskComponent } from './scrumboard/modify-task/modify-task.component';
+import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
+import {ModifyTaskComponent} from "./scrumboard/modify-task/modify-task.component";
+import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ModifyTaskComponent } from './scrumboard/modify-task/modify-task.compon
     RemoveUserComponent,
     AddUserComponent,
     AddTaskComponent,
-    ModifyTaskComponent
+    ModifyTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,14 @@ import { ModifyTaskComponent } from './scrumboard/modify-task/modify-task.compon
   {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
 ],
   bootstrap: [AppComponent],
-  // tslint:disable-next-line:max-line-length
-  entryComponents: [AddProjectComponent, AddTaskComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent]
+  entryComponents: [AddProjectComponent,
+    RemoveProjectComponent,
+    ModifyProjectComponent,
+    AddUserComponent,
+    ModifyUserComponent,
+    RemoveUserComponent,
+  AddTaskComponent,
+  ModifyTaskComponent,
+  DeleteTaskComponent]
 })
 export class AppModule { }
