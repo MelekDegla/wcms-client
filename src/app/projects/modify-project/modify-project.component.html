@@ -19,8 +19,7 @@
     <mat-label>description</mat-label>
     <input matInput style="width: 100%" [(ngModel)]="project.description"  formControlName="description" required minlength="3">
 
-    <mat-error *ngIf="description.invalid && (description.dirty || description.touched)"
-         >
+    <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
 
       <div *ngIf="description.errors.required">
         description is required.

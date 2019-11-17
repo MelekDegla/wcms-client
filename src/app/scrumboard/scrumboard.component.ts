@@ -6,6 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TaskService} from '../services/task/task.service';
 import {Project} from '../models/Project';
+import {MatDialog} from '@angular/material/dialog';
+import {AddMembersComponent} from './add-members/add-members.component';
 
 @Component({
   selector: 'app-scrumboard',
@@ -14,6 +16,7 @@ import {Project} from '../models/Project';
 })
 export class ScrumboardComponent implements OnInit {
   projectName: string;
+  project: Project;
   todo: [Task];
   inprogress: [Task];
   toverify: [Task];
@@ -22,7 +25,24 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
-  constructor(private projectService: ProjectService, private actR: ActivatedRoute, private taskService: TaskService) {
+  constructor(public dialog: MatDialog,
+              private projectService: ProjectService,
+              private actR: ActivatedRoute,
+              private taskService: TaskService) {
+  }
+
+  openDialogAddMembers(): void {
+    const dialogRef = this.dialog.open(AddMembersComponent, {
+      width: '400px',
+      data: {
+        id: this.project.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -48,6 +68,7 @@ export class ScrumboardComponent implements OnInit {
 
   ngOnInit() {
     this.projectService.findById(this.actR.snapshot.params.id).subscribe(res => {
+      this.project = res;
       this.projectName = res.name;
       // @ts-ignore
       this.problems = res.tasks.filter( t => t.status === 0);
@@ -62,6 +83,7 @@ export class ScrumboardComponent implements OnInit {
       // @ts-ignore
       this.actions = res.tasks.filter( t => t.status === 5);
     });
+
   }
 
 }

@@ -37,6 +37,7 @@ import { UsersComponent } from './users/users.component';
 import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
+import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     UsersComponent,
     ModifyUserComponent,
     RemoveUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddMembersComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,6 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 ],
   bootstrap: [AppComponent],
   // tslint:disable-next-line:max-line-length
-  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent]
+  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent, AddMembersComponent]
 })
 export class AppModule { }
