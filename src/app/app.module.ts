@@ -38,6 +38,7 @@ import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AddMembersComponent } from './scrumboard/add-members/add-members.compon
     MatTableModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [UserService,
   {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

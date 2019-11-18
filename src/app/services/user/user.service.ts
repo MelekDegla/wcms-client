@@ -53,13 +53,14 @@ export class UserService {
       headers: this.headers
     });
   }
-  addUserProject(idP, idU) {
+  addUserProject(userProject) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.http.post(this.baseurl + 'userprojects', {
+  /*  return this.http.post(this.baseurl + 'userprojects', {
       user: {
        id : idU
-  }, manager : true,
-      project: {id: idP}} , {headers: this.headers});
+  }, manager : isManager,
+      project: {id: idP}} , {headers: this.headers});*/
+    return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
   }
 
 }

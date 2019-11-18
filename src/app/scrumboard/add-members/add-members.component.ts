@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {User} from '../../models/User';
-import {MatTableDataSource} from '@angular/material/table';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../services/user/user.service';
+import {UserProject} from '../../models/UserProject';
 
 @Component({
   selector: 'app-add-members',
@@ -11,23 +11,24 @@ import {UserService} from '../../services/user/user.service';
 })
 export class AddMembersComponent implements OnInit {
   users: User[];
-  displayedColumns: string[] = ['username', 'email', 'Actions'];
-  dataSource = new MatTableDataSource(this.users);
+  userProject: UserProject;
   constructor( public dialogRef: MatDialogRef<AddMembersComponent>,
                @Inject(MAT_DIALOG_DATA) public data,
                private userService: UserService) { }
 
   ngOnInit() {
     this.loadUser();
+    this.userProject = new UserProject();
   }
   loadUser() {
     this.userService.list().subscribe(list => {
       this.users = list;
-      this.dataSource = new MatTableDataSource<User>(this.users);
     });
   }
   addUserProject(idU) {
-    this.userService.addUserProject(this.data.id, idU).subscribe(res => {
+    this.userProject.user.id = idU;
+    this.userProject.project.id = this.data.id;
+    this.userService.addUserProject(this.userProject).subscribe(res => {
       console.log(res);
     });
   }
