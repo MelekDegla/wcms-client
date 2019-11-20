@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Login} from '../../models/Login';
+// tslint:disable-next-line:import-spacing
 import  {User} from '../../models/User';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
@@ -53,4 +53,14 @@ export class UserService {
       headers: this.headers
     });
   }
+  addUserProject(userProject) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    /*  return this.http.post(this.baseurl + 'userprojects', {
+        user: {
+         id : idU
+    }, manager : isManager,
+        project: {id: idP}} , {headers: this.headers});*/
+    return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
+  }
+
 }
