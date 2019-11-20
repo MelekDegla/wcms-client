@@ -4,10 +4,16 @@
     <mat-card class="cardlogin"  @flyInOut [@shakeit]="this.states['state1']" >
       <mat-card-title >Login</mat-card-title>
       <form>
+        <mat-error style="visibility: hidden" #err>
+          <span>
+            Check usernmame or password !
+          </span>
+
+        </mat-error>
       <mat-card-content >
         <mat-form-field appearance="legacy" >
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Enter your username.."  [(ngModel)]="login.username" name="username" required>
+          <input matInput placeholder="Enter your username.."  [(ngModel)]="login.username"  name="username" required>
           <mat-icon matSuffix color="primary">account_circle</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="legacy" >

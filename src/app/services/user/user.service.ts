@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 import {Login} from '../../models/Login';
 import  {User} from '../../models/User';
 import {environment} from '../../../environments/environment';
@@ -53,11 +54,15 @@ export class UserService {
       headers: this.headers
     });
   }
-  getNotifs(id): Observable<User> {
+  addUserProject(userProject) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    // @ts-ignore
-    return this.http.get(this.baseurl + 'notifs', {
-      headers: this.headers
-    });
+  /*  return this.http.post(this.baseurl + 'userprojects', {
+      user: {
+       id : idU
+  }, manager : isManager,
+      project: {id: idP}} , {headers: this.headers});*/
+    return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
   }
+
+
 }

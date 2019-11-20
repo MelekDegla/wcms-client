@@ -6,6 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TaskService} from '../services/task/task.service';
 import {Project} from '../models/Project';
+
+import {AddMembersComponent} from './add-members/add-members.component';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
@@ -14,6 +16,7 @@ import {MatDialog} from '@angular/material';
 import {ModifyTaskComponent} from './modify-task/modify-task.component';
 import {DeleteTaskComponent} from './delete-task/delete-task.component';
 
+
 @Component({
   selector: 'app-scrumboard',
   templateUrl: './scrumboard.component.html',
@@ -21,6 +24,7 @@ import {DeleteTaskComponent} from './delete-task/delete-task.component';
 })
 export class ScrumboardComponent implements OnInit {
   projectName: string;
+  project: Project;
   todo: [Task];
   inprogress: [Task];
   toverify: [Task];
@@ -29,15 +33,29 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
+  constructor(public dialog: MatDialog,
+              private projectService: ProjectService,
+              private actR: ActivatedRoute,
+              private taskService: TaskService) {
+  }
+
+  openDialogAddMembers(): void {
+    const dialogRef = this.dialog.open(AddMembersComponent, {
+      width: '400px',
+      data: {
+        id: this.project.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
   private stompClient;
   private serverUrl = 'http://localhost:8091/socket';
   isLoaded = false;
   isCustomSocketOpened = false;
 
-  constructor(private projectService: ProjectService,
-              private actR: ActivatedRoute,
-              private taskService: TaskService,
-              private dialog: MatDialog) {
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -103,6 +121,7 @@ export class ScrumboardComponent implements OnInit {
 
   ngOnInit() {
     this.projectService.findById(this.actR.snapshot.params.id).subscribe(res => {
+      this.project = res;
       this.projectName = res.name;
       this.orderTasks(res);
     });
@@ -137,6 +156,7 @@ export class ScrumboardComponent implements OnInit {
     this.stompClient.subscribe('/socket-front-project', (res) => {
       this.orderTasks(JSON.parse(res.body));
     });
+
   }
 
 }
