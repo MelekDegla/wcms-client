@@ -6,8 +6,17 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TaskService} from '../services/task/task.service';
 import {Project} from '../models/Project';
-import {MatDialog} from '@angular/material/dialog';
+
+
 import {AddMembersComponent} from './add-members/add-members.component';
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
+import {environment} from '../../environments/environment';
+import {AddTaskComponent} from './add-task/add-task.component';
+import {MatDialog} from '@angular/material';
+import {ModifyTaskComponent} from './modify-task/modify-task.component';
+import {DeleteTaskComponent} from './delete-task/delete-task.component';
+
 
 @Component({
   selector: 'app-scrumboard',
@@ -25,6 +34,12 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
+
+  private stompClient;
+  private serverUrl = 'http://localhost:8091/socket';
+  isLoaded = false;
+  isCustomSocketOpened = false;
+
   constructor(public dialog: MatDialog,
               private projectService: ProjectService,
               private actR: ActivatedRoute,
@@ -43,6 +58,7 @@ export class ScrumboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.ngOnInit();
     });
+
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -62,8 +78,49 @@ export class ScrumboardComponent implements OnInit {
       }
       this.task.project = new Project();
       this.task.project.id = this.actR.snapshot.params.id;
-      this.taskService.add(this.task).subscribe();
-    }
+
+      this.taskService.modify(this.task).subscribe();
+      }
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '400px',
+      data: {
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
+  openDialogModify(id): void {
+    const dialogRef = this.dialog.open(ModifyTaskComponent, {
+      width: '400px',
+      data: {
+        id,
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
+  openDialogDelete(id): void {
+    const dialogRef = this.dialog.open(DeleteTaskComponent, {
+      width: '400px',
+      data: {
+        id,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
   }
 
   ngOnInit() {

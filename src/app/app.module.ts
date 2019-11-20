@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MAT_DATE_LOCALE,
+  MAT_DATE_LOCALE, MatBadgeModule,
   MatButtonModule,
   MatCardModule, MatDatepickerModule,
   MatDialogModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatSnackBarModule,
   MatTableModule,
   MatTooltipModule, NativeDateModule
 } from '@angular/material';
@@ -38,7 +38,12 @@ import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
+import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
+import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +59,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ModifyUserComponent,
     RemoveUserComponent,
     AddUserComponent,
-    AddMembersComponent
+    AddMembersComponent,
+    AddTaskComponent,
+    ModifyTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -82,13 +90,27 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+
+    MatCheckboxModule,
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [UserService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
   ],
   bootstrap: [AppComponent],
-  // tslint:disable-next-line:max-line-length
-  entryComponents: [AddProjectComponent, RemoveProjectComponent, ModifyProjectComponent, AddUserComponent, ModifyUserComponent, RemoveUserComponent, AddMembersComponent]
+
+
+
+  entryComponents: [AddProjectComponent,
+    RemoveProjectComponent,
+    ModifyProjectComponent,
+    AddUserComponent,
+    ModifyUserComponent,
+    RemoveUserComponent,
+  AddTaskComponent,
+  ModifyTaskComponent,
+  DeleteTaskComponent, AddMembersComponent]
+
 })
 export class AppModule { }

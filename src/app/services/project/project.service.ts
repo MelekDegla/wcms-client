@@ -37,7 +37,7 @@ export class ProjectService {
 
   modify(project) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.http.post(this.baseurl + 'projects/', project , {
+    return this.http.put(this.baseurl + 'projects/', project , {
       headers: this.headers
     });
   }
