@@ -17,6 +17,7 @@ export class ModifyProjectComponent implements OnInit {
   ngOnInit() {
     this.projectService.findById(this.data.id).subscribe(res => {
       this.project = res;
+      console.log(this.project);
     });
   }
   modify() {

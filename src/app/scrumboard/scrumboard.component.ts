@@ -10,9 +10,9 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
 import {AddTaskComponent} from './add-task/add-task.component';
-import {MatDialog} from "@angular/material";
-import {ModifyTaskComponent} from "./modify-task/modify-task.component";
-import {DeleteTaskComponent} from "./delete-task/delete-task.component";
+import {MatDialog} from '@angular/material';
+import {ModifyTaskComponent} from './modify-task/modify-task.component';
+import {DeleteTaskComponent} from './delete-task/delete-task.component';
 
 @Component({
   selector: 'app-scrumboard',
@@ -57,7 +57,7 @@ export class ScrumboardComponent implements OnInit {
       }
       this.task.project = new Project();
       this.task.project.id = this.actR.snapshot.params.id;
-      this.taskService.add(this.task).subscribe();
+      this.taskService.modify(this.task).subscribe();
       }
   }
   openDialog(): void {
