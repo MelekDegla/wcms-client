@@ -1,10 +1,11 @@
 <h3 style="color: #3C56B8; margin-top: 15px"><span>{{projectName}}</span><button mat-fab (click)="openDialog()" ><mat-icon>add</mat-icon></button></h3>
 <hr>
-<div class="ScrumBoardContainer">
-  <div class="row ScrumBoardRow" cdkDropListGroup>
-    <div class="col ScrumBoardCol">
 
-      <mat-card class="mat-card-container">
+<div class="ScrumBoardContainer"  >
+  <div class=" ScrumBoardRow"   cdkDropListGroup style="display: flex; overflow-x: scroll; height: 100%" >
+    <div class=" ScrumBoardCol"   style="width: 200px">
+
+      <mat-card class="mat-card-container" >
         <mat-card-header>
           <mat-card-title>Things To Do</mat-card-title>
         </mat-card-header>
