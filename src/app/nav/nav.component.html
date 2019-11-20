@@ -9,7 +9,7 @@
       </div>
     </mat-toolbar>
     <mat-nav-list >
-      <a mat-list-item routerLink="/dashboard" class="list-item d-flex justify-content-center active" >
+      <a mat-list-item (click)="clicked('p', 'u')" id="p" routerLink="/dashboard" class="list-item d-flex justify-content-center active"  >
 
         <div class="itemListContainer" >
           <div class="icon">
@@ -23,7 +23,7 @@
         </div>
 
       </a>
-      <a mat-list-item  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
+      <a mat-list-item (click)="clicked('u', 'p')" id="u"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
 
         <div class="itemListContainer ">
           <div class="icon d-flex justify-content-center">
@@ -32,7 +32,7 @@
             </i>
           </div>
           <div class="iconName">
-            Employers
+            Collaborators
           </div>
         </div>
 
@@ -53,10 +53,15 @@
       </button>
       <div>
 
-
-        <button mat-button [matMenuTriggerFor]="menu"> <mat-icon>person</mat-icon> <span>{{username}}</span></button>
+        <button mat-icon-button [matMenuTriggerFor]="notif" ><mat-icon [matBadge]="notifNumber" matBadgeColor="accent" matBadgePosition="above before" matBadgeSize="medium">notifications</mat-icon></button>
+        <button matTooltip="click to drop down " mat-button [matMenuTriggerFor]="menu"> <mat-icon style="font-size: 20px">person</mat-icon> <span>{{username}}</span> <mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+        <mat-menu #notif="matMenu">
+          <div mat-menu-item  *ngFor="let n of notifications.reverse()" [routerLink]="n.link"  style="display: flex; flex-direction: column; height: 100px" >
+           <span>{{n.title}} </span> <span>{{n.body}} <span *ngIf="!n.viewed" style="color: #3C56B8; font-size: 32px">•</span></span>
+          </div>
         </mat-menu>
       </div>
     </mat-toolbar>

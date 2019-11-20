@@ -5,6 +5,8 @@
     </button>
   </mat-card>
 </div>
+<h3 style="color: #3C56B8; margin-top: 15px"><span>{{projectName}}</span><button mat-fab (click)="openDialog()" ><mat-icon>add</mat-icon></button></h3>
+<hr>
 <div class="ScrumBoardContainer">
   <div class="row ScrumBoardRow" cdkDropListGroup>
     <div class="col ScrumBoardCol">
@@ -19,9 +21,14 @@
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of todo" cdkDrag>
+          <mat-card *ngFor="let item of todo" cdkDrag >
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
 
@@ -44,6 +51,11 @@
           <mat-card *ngFor="let item of inprogress" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
         </mat-card-content>
@@ -64,6 +76,11 @@
           <mat-card *ngFor="let item of toverify" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
         </mat-card-content>
@@ -84,6 +101,11 @@
           <mat-card *ngFor="let item of done" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
         </mat-card-content>
@@ -104,6 +126,11 @@
           <mat-card *ngFor="let item of problems" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
         </mat-card-content>
@@ -124,6 +151,11 @@
           <mat-card *ngFor="let item of actions" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
+
+            </mat-card-actions>
           </mat-card>
 
         </mat-card-content>

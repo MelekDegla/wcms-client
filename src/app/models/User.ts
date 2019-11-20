@@ -1,3 +1,5 @@
+import {Notification} from './Notification';
+
 export class User {
   id: number;
   username: string;
@@ -9,6 +11,7 @@ export class User {
   cin: string;
   email: string;
   roles: string[];
+  notifications: Notification[];
 
   constructor() {  }
 }

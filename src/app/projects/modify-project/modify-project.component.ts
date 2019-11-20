@@ -32,6 +32,7 @@ export class ModifyProjectComponent implements OnInit {
     this.project = new Project();
     this.projectService.findById(this.data.id).subscribe(res => {
       this.project = res;
+      console.log(this.project);
     });
   }
   modify() {

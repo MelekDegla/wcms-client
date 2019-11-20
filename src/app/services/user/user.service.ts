@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// tslint:disable-next-line:import-spacing
+
+import {Login} from '../../models/Login';
 import  {User} from '../../models/User';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
@@ -62,5 +63,6 @@ export class UserService {
       project: {id: idP}} , {headers: this.headers});*/
     return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
   }
+
 
 }
