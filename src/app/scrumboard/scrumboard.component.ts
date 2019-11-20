@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {TaskService} from '../services/task/task.service';
 import {Project} from '../models/Project';
 
+
 import {AddMembersComponent} from './add-members/add-members.component';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
@@ -33,6 +34,7 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
+
   private stompClient;
   private serverUrl = 'http://localhost:8091/socket';
   isLoaded = false;
@@ -57,16 +59,15 @@ export class ScrumboardComponent implements OnInit {
       this.ngOnInit();
     });
 
-
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
       switch (event.container.id) {
         case 'todo': this.task = event.container.data[event.currentIndex]; this.task.status = 1;  break;
         case 'inprogress': this.task = event.container.data[event.currentIndex]; this.task.status = 2;  break;
@@ -77,6 +78,7 @@ export class ScrumboardComponent implements OnInit {
       }
       this.task.project = new Project();
       this.task.project.id = this.actR.snapshot.params.id;
+
       this.taskService.modify(this.task).subscribe();
       }
   }
@@ -125,38 +127,18 @@ export class ScrumboardComponent implements OnInit {
     this.projectService.findById(this.actR.snapshot.params.id).subscribe(res => {
       this.project = res;
       this.projectName = res.name;
-      this.orderTasks(res);
-    });
-    this.initializeWebSocketConnection();
-  }
-  orderTasks(res) {
-    // @ts-ignore
-    this.problems = res.tasks.filter( t => t.status === 0);
-    // @ts-ignore
-    this.todo = res.tasks.filter( t => t.status === 1);
-    // @ts-ignore
-    this.inprogress = res.tasks.filter( t => t.status === 2);
-    // @ts-ignore
-    this.done = res.tasks.filter( t => t.status === 4);
-    // @ts-ignore
-    this.toverify = res.tasks.filter( t => t.status === 3);
-    // @ts-ignore
-    this.actions = res.tasks.filter( t => t.status === 5);
-  }
-  initializeWebSocketConnection() {
-    let ws = new SockJS(this.serverUrl);
-    this.stompClient = Stomp.over(ws);
-    let that = this;
-    this.stompClient.connect({}, frame => {
-      that.isLoaded = true;
-      that.openGlobalSocket();
-    }, err => {
-      console.log(err);
-    });
-  }
-    openGlobalSocket() {
-    this.stompClient.subscribe('/socket-front-project', (res) => {
-      this.orderTasks(JSON.parse(res.body));
+      // @ts-ignore
+      this.problems = res.tasks.filter( t => t.status === 0);
+      // @ts-ignore
+      this.todo = res.tasks.filter( t => t.status === 1);
+      // @ts-ignore
+      this.inprogress = res.tasks.filter( t => t.status === 2);
+      // @ts-ignore
+      this.done = res.tasks.filter( t => t.status === 4);
+      // @ts-ignore
+      this.toverify = res.tasks.filter( t => t.status === 3);
+      // @ts-ignore
+      this.actions = res.tasks.filter( t => t.status === 5);
     });
 
   }
