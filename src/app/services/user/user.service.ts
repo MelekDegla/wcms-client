@@ -53,4 +53,11 @@ export class UserService {
       headers: this.headers
     });
   }
+  getNotifs(id): Observable<User> {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    // @ts-ignore
+    return this.http.get(this.baseurl + 'notifs', {
+      headers: this.headers
+    });
+  }
 }

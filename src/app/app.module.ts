@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MAT_DATE_LOCALE,
+  MAT_DATE_LOCALE, MatBadgeModule,
   MatButtonModule,
   MatCardModule, MatDatepickerModule,
   MatDialogModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatNativeDateModule, MatSnackBarModule,
   MatTableModule,
   MatTooltipModule, NativeDateModule
 } from '@angular/material';
@@ -38,7 +38,7 @@ import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
-import {ModifyTaskComponent} from "./scrumboard/modify-task/modify-task.component";
+import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 
 @NgModule({
@@ -83,7 +83,9 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     MatTableModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [UserService,
   {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
