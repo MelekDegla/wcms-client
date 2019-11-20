@@ -1,15 +1,38 @@
-<h1 mat-dialog-title>Add project</h1>
+<h1 mat-dialog-title>Modify project</h1>
 <div mat-dialog-content>
+  <form [formGroup]="updForm">
   <mat-form-field style="width: 100%">
     <mat-label>name</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="project.name">
+    <input matInput cdkFocusInitial formControlName="name" [(ngModel)]="project.name" required minlength="3" >
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)" >
+
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>description</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="project.description">
+    <input matInput style="width: 100%" [(ngModel)]="project.description"  formControlName="description" required minlength="3">
+
+    <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
+
+      <div *ngIf="description.errors.required">
+        description is required.
+      </div>
+      <div *ngIf="description.errors.minlength">
+        description must be at least 3 characters long.
+      </div>
+
+    </mat-error>
   </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button >No Thanks</button>
-  <button mat-flat-button   (click)="modify(project.id)">Ok</button>
+  <button mat-button [mat-dialog-close]="true" >No Thanks</button>
+  <button mat-flat-button   (click)="modify()">Ok</button>
 </div>
