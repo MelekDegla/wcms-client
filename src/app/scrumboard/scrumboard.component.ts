@@ -33,6 +33,11 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
+  private stompClient;
+  private serverUrl = 'http://localhost:8091/socket';
+  isLoaded = false;
+  isCustomSocketOpened = false;
+
   constructor(public dialog: MatDialog,
               private projectService: ProjectService,
               private actR: ActivatedRoute,
@@ -51,10 +56,7 @@ export class ScrumboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.ngOnInit();
     });
-  private stompClient;
-  private serverUrl = 'http://localhost:8091/socket';
-  isLoaded = false;
-  isCustomSocketOpened = false;
+
 
   }
   drop(event: CdkDragDrop<Task[]>) {

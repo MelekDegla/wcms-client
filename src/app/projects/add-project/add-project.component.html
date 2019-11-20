@@ -5,8 +5,7 @@
     <mat-label>name</mat-label>
     <input matInput formControlName="name" required minlength="3">
 
-    <div *ngIf="name.invalid && (name.dirty || name.touched)"
-         class="alert alert-danger">
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
 
       <div *ngIf="name.errors.required">
         Name is required.
@@ -15,14 +14,13 @@
         Name must be at least 3 characters long.
       </div>
 
-    </div>
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>description</mat-label>
     <input matInput style="width: 100%" formControlName="description" required minlength="3">
 
-    <div *ngIf="description.invalid && (description.dirty || description.touched)"
-         class="alert alert-danger">
+    <mat-error *ngIf="description.invalid && (description.dirty || description.touched)">
 
       <div *ngIf="description.errors.required">
         description is required.
@@ -31,7 +29,7 @@
         description must be at least 3 characters long.
       </div>
 
-    </div>
+    </mat-error>
   </mat-form-field>
 </form>
 </div>

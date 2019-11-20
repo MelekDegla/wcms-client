@@ -29,13 +29,13 @@ export class ModifyProjectComponent implements OnInit {
     // this.onValueChanges();
   }
   ngOnInit() {
-    this.project = new Project();
     this.projectService.findById(this.data.id).subscribe(res => {
       this.project = res;
       console.log(this.project);
     });
   }
   modify() {
+    if (this.updForm.invalid) { return; }
     this.projectService.modify(this.project).subscribe(res => {
       this.dialogRef.close();
     });

@@ -58,7 +58,7 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     RemoveUserComponent,
     AddUserComponent,
 
-    AddMembersComponent
+    AddMembersComponent,
     AddTaskComponent,
     ModifyTaskComponent,
     DeleteTaskComponent
@@ -89,7 +89,7 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
     MatBadgeModule,
     MatSnackBarModule
   ],

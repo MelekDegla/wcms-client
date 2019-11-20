@@ -44,18 +44,14 @@ export class ModifyUserComponent implements OnInit {
         Validators.required,
         Validators.minLength(5),
         Validators.pattern(/[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}/),
-      ]),
-      password : new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
       ])
     });
   }
   ngOnInit() {
-    this.user = new User();
     this.userService.findById(this.data.id).subscribe(res => {
       this.user = res;
       this.user.birthdate = moment(this.user.birthdate).toDate().toString();
+      console.log(this.user.birthdate);
     });
   }
   modify() {
@@ -74,5 +70,4 @@ export class ModifyUserComponent implements OnInit {
   get leaveBalance() { return this.updForm.get('leaveBalance'); }
   get address() { return this.updForm.get('address'); }
   get salary() { return this.updForm.get('salary'); }
-  get password() { return this.updForm.get('password'); }
 }
