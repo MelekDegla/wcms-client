@@ -96,4 +96,13 @@ mat-card mat-card mat-card-title
   min-height: 50px;
 }
 
-
+.scrumSecondNavTitle{
+  color: white;
+  font-stretch: expanded;
+  font-family: 'Helvetica Neue',serif;
+  font-weight: lighter;
+}
+.mat-card-container  mat-card-header mat-card-title
+{
+  color: white;
+}

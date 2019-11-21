@@ -13,9 +13,11 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
 import {AddTaskComponent} from './add-task/add-task.component';
-import {MatDialog} from '@angular/material';
+import {MatBottomSheet, MatDialog, MatBottomSheetRef} from '@angular/material';
 import {ModifyTaskComponent} from './modify-task/modify-task.component';
 import {DeleteTaskComponent} from './delete-task/delete-task.component';
+import {Log} from '../models/Log';
+import {LogComponent} from './log/log.component';
 
 
 @Component({
@@ -26,6 +28,8 @@ import {DeleteTaskComponent} from './delete-task/delete-task.component';
 export class ScrumboardComponent implements OnInit {
   projectName: string;
   project: Project;
+  // @ts-ignore
+  logs: [Log] = [];
   todo: [Task];
   inprogress: [Task];
   toverify: [Task];
@@ -43,7 +47,20 @@ export class ScrumboardComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private projectService: ProjectService,
               private actR: ActivatedRoute,
-              private taskService: TaskService) {
+              private taskService: TaskService,
+              private bottomSheet: MatBottomSheet) {
+  }
+
+  openBottomSheet(): void {
+    const sheet = this.bottomSheet.open(LogComponent , {
+      data: {
+        log : this.logs
+      }
+    });
+    sheet.afterDismissed().subscribe( res => {
+      this.ngOnInit();
+    });
+
   }
 
   openDialogAddMembers(): void {
@@ -124,21 +141,47 @@ export class ScrumboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    // @ts-ignore
+    this.logs = [];
     this.projectService.findById(this.actR.snapshot.params.id).subscribe(res => {
-      this.project = res;
+      this.orderTasks(res);
       this.projectName = res.name;
-      // @ts-ignore
-      this.problems = res.tasks.filter( t => t.status === 0);
-      // @ts-ignore
-      this.todo = res.tasks.filter( t => t.status === 1);
-      // @ts-ignore
-      this.inprogress = res.tasks.filter( t => t.status === 2);
-      // @ts-ignore
-      this.done = res.tasks.filter( t => t.status === 4);
-      // @ts-ignore
-      this.toverify = res.tasks.filter( t => t.status === 3);
-      // @ts-ignore
-      this.actions = res.tasks.filter( t => t.status === 5);
+      this.project = res;
+
+      this.project.tasks.forEach(t => t.logs.forEach( a => this.logs.push(a)));
+      console.log(this.logs);
+    });
+    this.initializeWebSocketConnection();
+  }
+  orderTasks(res) {
+    // @ts-ignore
+    this.problems = res.tasks.filter( t => t.status === 0);
+    // @ts-ignore
+    this.todo = res.tasks.filter( t => t.status === 1);
+    // @ts-ignore
+    this.inprogress = res.tasks.filter( t => t.status === 2);
+    // @ts-ignore
+    this.done = res.tasks.filter( t => t.status === 4);
+    // @ts-ignore
+    this.toverify = res.tasks.filter( t => t.status === 3);
+    // @ts-ignore
+    this.actions = res.tasks.filter( t => t.status === 5);
+  }
+  initializeWebSocketConnection() {
+    const ws = new SockJS(this.serverUrl);
+    this.stompClient = Stomp.over(ws);
+    const that = this;
+    this.stompClient.connect({}, frame => {
+      that.isLoaded = true;
+      that.openGlobalSocket();
+    }, err => {
+      console.log(err);
+    });
+  }
+    openGlobalSocket() {
+    this.stompClient.subscribe('/socket-front-project', (res) => {
+      this.orderTasks(JSON.parse(res.body));
+
     });
 
   }
