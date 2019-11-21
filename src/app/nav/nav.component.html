@@ -59,8 +59,13 @@
           <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
         <mat-menu #notif="matMenu">
-          <div mat-menu-item  *ngFor="let n of notifications.reverse()" [routerLink]="n.link"  style="display: flex; flex-direction: column; height: 100px" >
-           <span>{{n.title}} </span> <span>{{n.body}} <span *ngIf="!n.viewed" style="color: #3C56B8; font-size: 32px">•</span></span>
+          <div   *ngFor="let n of notifications.reverse()" [routerLink]="n.link"  style="display: flex; flex-direction: column; border-bottom: black 1px solid" >
+           <div style="display: flex; justify-content: space-between">
+             <div style="padding: 5px; color: #3C56B8"> {{n.title}} </div>
+             <div></div>
+           </div>
+
+            <div style=" padding: 10px">{{n.body}} </div>
           </div>
         </mat-menu>
       </div>

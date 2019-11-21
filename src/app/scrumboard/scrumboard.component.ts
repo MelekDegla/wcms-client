@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import {ProjectService} from '../services/project/project.service';
 import {Task} from '../models/Task';
@@ -13,7 +13,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
 import {AddTaskComponent} from './add-task/add-task.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatMenuTrigger} from '@angular/material';
 import {ModifyTaskComponent} from './modify-task/modify-task.component';
 import {DeleteTaskComponent} from './delete-task/delete-task.component';
 
@@ -32,20 +32,25 @@ export class ScrumboardComponent implements OnInit {
   done: [Task];
   problems: [Task];
   actions: [Task];
-  ob: Observable<any>;
   task;
 
   private stompClient;
   private serverUrl = 'http://localhost:8091/socket';
   isLoaded = false;
   isCustomSocketOpened = false;
+  // @ts-ignore
+  @ViewChild(MatMenuTrigger)
+  trigger: MatMenuTrigger;
+
 
   constructor(public dialog: MatDialog,
               private projectService: ProjectService,
               private actR: ActivatedRoute,
               private taskService: TaskService) {
   }
-
+  someMethod() {
+    this.trigger.openMenu();
+  }
   openDialogAddMembers(): void {
     const dialogRef = this.dialog.open(AddMembersComponent, {
       width: '400px',

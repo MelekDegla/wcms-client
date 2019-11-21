@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
   private serverUrl: string = environment.webservice.baseUrl + 'socket';
   isLoaded = false;
   notifNumber: number = 0;
-  notifications: Notification[];
+  notifications: Notification[] = [];
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userService: UserService,
               private snackBar: MatSnackBar) {}

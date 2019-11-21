@@ -1,4 +1,4 @@
-<h3 style="color: #3C56B8; margin-top: 15px"><span>{{projectName}}</span><button mat-fab (click)="openDialog()" ><mat-icon>add</mat-icon></button></h3>
+<h3 style="color: #3C56B8; margin-top: 15px"><span>{{projectName}}</span><button mat-fab (click)="openDialogAddMembers()" ><mat-icon>add</mat-icon></button></h3>
 <hr>
 
 <div class="ScrumBoardContainer"  >
@@ -9,13 +9,16 @@
         <mat-card-header>
           <mat-card-title>Things To Do</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks" (contextmenu)="$event.preventDefault()"  cdkDropList
                           [cdkDropListData]="todo"
                           id="todo"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of todo" cdkDrag >
+          <mat-card *ngFor="let item of todo" cdkDrag [matMenuTriggerFor]="menu" (contextmenu)="$event.preventDefault();someMethod() ">
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item >Logout</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
             <mat-card-actions>
