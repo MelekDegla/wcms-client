@@ -39,12 +39,15 @@ import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
+import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
 import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 import { LogComponent } from './scrumboard/log/log.component';
 import { MatBottomSheet } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +63,6 @@ import { MatBottomSheet } from '@angular/material';
     ModifyUserComponent,
     RemoveUserComponent,
     AddUserComponent,
-
     AddMembersComponent,
     AddTaskComponent,
     ModifyTaskComponent,
@@ -95,14 +97,18 @@ import { MatBottomSheet } from '@angular/material';
     MatButtonModule,
     MatBottomSheetModule,
     MatNativeDateModule,
+
     MatCheckboxModule,
     MatBadgeModule,
     MatSnackBarModule
   ],
   providers: [UserService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-],
+
+  ],
+
   bootstrap: [AppComponent],
+
 
 
   entryComponents: [AddProjectComponent,
@@ -114,5 +120,6 @@ import { MatBottomSheet } from '@angular/material';
   AddTaskComponent,
   ModifyTaskComponent,
   DeleteTaskComponent, AddMembersComponent, LogComponent]
+
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+
 import {Login} from '../../models/Login';
 import  {User} from '../../models/User';
 import {environment} from '../../../environments/environment';
@@ -56,6 +57,7 @@ export class UserService {
   }
   addUserProject(userProject) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+
   /*  return this.http.post(this.baseurl + 'userprojects', {
       user: {
        id : idU
@@ -63,6 +65,7 @@ export class UserService {
       project: {id: idP}} , {headers: this.headers});*/
     return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
   }
+
 
 
 }

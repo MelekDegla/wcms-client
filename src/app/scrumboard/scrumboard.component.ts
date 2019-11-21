@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {TaskService} from '../services/task/task.service';
 import {Project} from '../models/Project';
 
+
 import {AddMembersComponent} from './add-members/add-members.component';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
@@ -37,6 +38,7 @@ export class ScrumboardComponent implements OnInit {
   actions: [Task];
   ob: Observable<any>;
   task;
+
   private stompClient;
   private serverUrl = 'http://localhost:8091/socket';
   isLoaded = false;
@@ -74,16 +76,15 @@ export class ScrumboardComponent implements OnInit {
       this.ngOnInit();
     });
 
-
   }
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
       switch (event.container.id) {
         case 'todo': this.task = event.container.data[event.currentIndex]; this.task.status = 1;  break;
         case 'inprogress': this.task = event.container.data[event.currentIndex]; this.task.status = 2;  break;
@@ -94,6 +95,7 @@ export class ScrumboardComponent implements OnInit {
       }
       this.task.project = new Project();
       this.task.project.id = this.actR.snapshot.params.id;
+
       this.taskService.modify(this.task).subscribe();
       }
   }
@@ -179,6 +181,7 @@ export class ScrumboardComponent implements OnInit {
     openGlobalSocket() {
     this.stompClient.subscribe('/socket-front-project', (res) => {
       this.orderTasks(JSON.parse(res.body));
+
     });
 
   }

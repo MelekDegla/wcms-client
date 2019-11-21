@@ -16,6 +16,7 @@
   </div>
 </div>
 <!--<div class="">
+
   <mat-card matTooltip="add project" class="text-center" style="padding: 33px 0 33px 0;" (click)="openDialogAddMembers()">
     <button mat-fab color="primary">
       <mat-icon style="color: white; font-size: 24px;">add</mat-icon>
@@ -29,6 +30,7 @@ overflow-y: hidden; height: 100%">
   <div class="d-flex ScrumBoardRow" cdkDropListGroup>
     <div class="col ScrumBoardCol" >
 
+
       <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Things To Do</mat-card-title>
@@ -39,14 +41,9 @@ overflow-y: hidden; height: 100%">
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of todo" cdkDrag >
+          <mat-card *ngFor="let item of todo" cdkDrag>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
-            <mat-card-actions>
-              <button mat-icon-button (click)="openDialogModify(item.id)"> <mat-icon>edit</mat-icon></button>
-              <button mat-icon-button (click)="openDialogDelete(item.id)"> <mat-icon>remove</mat-icon></button>
-
-            </mat-card-actions>
           </mat-card>
 
           <!-- Add Task -->
