@@ -1,4 +1,5 @@
 import {Notification} from './Notification';
+import {UserProject} from './UserProject';
 
 export class User {
   id: number;
@@ -12,6 +13,7 @@ export class User {
   email: string;
   roles: string[];
   notifications: Notification[];
+  userProjects: UserProject[];
 
   constructor() {  }
 }

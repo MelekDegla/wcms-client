@@ -70,6 +70,10 @@ clicked(id, idr) {
       console.log(res);
       this.notifications.push(JSON.parse(res.body));
       this.notifNumber++;
+      let audio = new Audio();
+      audio.src = '/assets/deduction.mp3';
+      audio.load();
+      audio.play();
       // @ts-ignore
       this.openSnackBar(JSON.parse(res.body).title + ' : ' + JSON.parse(res.body).body);
     });

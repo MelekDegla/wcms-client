@@ -15,7 +15,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   save() {
-    this.task.status = 1;
+    this.task.status = this.data.status;
     // @ts-ignore
     this.task.project = {id: this.data.idproject};
     this.taskService.add(this.task).subscribe(res => {

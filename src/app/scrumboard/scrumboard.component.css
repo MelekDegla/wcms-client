@@ -73,7 +73,7 @@ h2{
 
 .mat-card-container
 {
-  overflow-y: auto ;
+
   max-height: 70vh;
   margin-right: 5px;
   width: 200px;
@@ -108,4 +108,18 @@ mat-card mat-card mat-card-title
   width: 200px;
 }
 
+.scrumSecondNavTitle{
+  color: white;
+  font-stretch: expanded;
+  font-family: 'Helvetica Neue',serif;
+  font-weight: lighter;
+}
+.mat-card-container  mat-card-header mat-card-title
+{
+  color: white;
+}
 
+.colbody{
+  overflow-y: auto;
+  max-height: 54vh
+}

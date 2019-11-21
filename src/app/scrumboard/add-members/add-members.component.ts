@@ -11,7 +11,10 @@ import {UserProject} from '../../models/UserProject';
 })
 export class AddMembersComponent implements OnInit {
   users: User[];
+  usersf: User[] = [];
   userProject: UserProject;
+  search = '';
+  private b: boolean;
   constructor( public dialogRef: MatDialogRef<AddMembersComponent>,
                @Inject(MAT_DIALOG_DATA) public data,
                private userService: UserService) { }
@@ -23,6 +26,24 @@ export class AddMembersComponent implements OnInit {
   loadUser() {
     this.userService.list().subscribe(list => {
       this.users = list;
+      this.usersf = [];
+      this.users.forEach(u => {
+        this.b = false;
+        if (u.userProjects.length !== 0 ) {
+          u.userProjects.forEach(up => {
+            if ( up.project.id === this.data.id) {
+              this.b = true;
+            }
+          });
+          // @ts-ignore
+          if (this.b === false) {
+            this.usersf.push(u);
+          }
+        } else {
+          this.usersf = this.users;
+        }
+        console.log(this.usersf);
+      });
     });
   }
   addUserProject(idU) {
@@ -30,6 +51,7 @@ export class AddMembersComponent implements OnInit {
     this.userProject.project.id = this.data.id;
     this.userService.addUserProject(this.userProject).subscribe(res => {
       console.log(res);
+      this.ngOnInit();
     });
   }
 }
