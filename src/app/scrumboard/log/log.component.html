@@ -1,0 +1,26 @@
+<h3 class="text-center" style="color: #E91E63; font-family: bebas, serif">Menu</h3>
+<div>
+  <div class="logHistory">
+    <div class="activity">
+      <i class="material-icons align-middle" style="color: #334BAB" >
+        local_activity
+      </i>
+      <span class="align-middle menuItem" style="font-weight: bold; padding-left: 7px">Activity</span>
+    </div>
+    <div class="logItems" style="padding-top: 10px">
+      <div class="logItem" *ngFor="let log of logs;">
+        <i class="material-icons align-middle" style="color: #334BAB">
+          account_circle
+        </i>
+        <span  class="align-middle" style="font-family: Georgia, serif" *ngIf="log.newStatus != log.oldStatus; else newStatus">
+          {{log.name}} has {{log.action}} from {{log.oldStatus}} To {{log.newStatus}}
+        </span>
+        <ng-template #newStatus>
+          <span style="font-family: Georgia, serif">
+            {{log.name}} has {{log.action}} a Task named {{log.task}}
+          </span>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

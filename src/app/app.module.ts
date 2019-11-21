@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MAT_DATE_LOCALE, MatBadgeModule,
+  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+  MAT_DATE_LOCALE, MatBadgeModule, MatBottomSheetModule,
   MatButtonModule,
   MatCardModule, MatDatepickerModule,
-  MatDialogModule,
+  MatDialogModule, MatDialogRef,
   MatIconModule,
   MatInputModule, MatNativeDateModule, MatSnackBarModule,
   MatTableModule,
@@ -38,10 +39,12 @@ import { ModifyUserComponent } from './users/modify-user/modify-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
 import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
+import { LogComponent } from './scrumboard/log/log.component';
+import { MatBottomSheet } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,8 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     AddMembersComponent,
     AddTaskComponent,
     ModifyTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    LogComponent
   ],
   imports: [
     BrowserModule,
@@ -88,13 +92,15 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     MatTableModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatButtonModule,
+    MatBottomSheetModule,
     MatNativeDateModule,
     MatCheckboxModule,
     MatBadgeModule,
     MatSnackBarModule
   ],
   providers: [UserService,
-  {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
 ],
   bootstrap: [AppComponent],
 
@@ -107,6 +113,6 @@ import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.compon
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
-  DeleteTaskComponent, AddMembersComponent]
+  DeleteTaskComponent, AddMembersComponent, LogComponent]
 })
 export class AppModule { }

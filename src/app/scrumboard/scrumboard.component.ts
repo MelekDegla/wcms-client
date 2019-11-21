@@ -12,9 +12,11 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
 import {AddTaskComponent} from './add-task/add-task.component';
-import {MatDialog} from '@angular/material';
+import {MatBottomSheet, MatDialog, MatBottomSheetRef} from '@angular/material';
 import {ModifyTaskComponent} from './modify-task/modify-task.component';
 import {DeleteTaskComponent} from './delete-task/delete-task.component';
+import {Log} from '../models/Log';
+import {LogComponent} from './log/log.component';
 
 
 @Component({
@@ -25,6 +27,8 @@ import {DeleteTaskComponent} from './delete-task/delete-task.component';
 export class ScrumboardComponent implements OnInit {
   projectName: string;
   project: Project;
+  // @ts-ignore
+  logs: [Log] = [];
   todo: [Task];
   inprogress: [Task];
   toverify: [Task];
@@ -41,7 +45,20 @@ export class ScrumboardComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private projectService: ProjectService,
               private actR: ActivatedRoute,
-              private taskService: TaskService) {
+              private taskService: TaskService,
+              private bottomSheet: MatBottomSheet) {
+  }
+
+  openBottomSheet(): void {
+    const sheet = this.bottomSheet.open(LogComponent , {
+      data: {
+        log : this.logs
+      }
+    });
+    sheet.afterDismissed().subscribe( res => {
+      this.ngOnInit();
+    });
+
   }
 
   openDialogAddMembers(): void {
@@ -122,10 +139,15 @@ export class ScrumboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    // @ts-ignore
+    this.logs = [];
     this.projectService.findById(this.actR.snapshot.params.id).subscribe(res => {
-      this.project = res;
-      this.projectName = res.name;
       this.orderTasks(res);
+      this.projectName = res.name;
+      this.project = res;
+
+      this.project.tasks.forEach(t => t.logs.forEach( a => this.logs.push(a)));
+      console.log(this.logs);
     });
     this.initializeWebSocketConnection();
   }
@@ -144,9 +166,9 @@ export class ScrumboardComponent implements OnInit {
     this.actions = res.tasks.filter( t => t.status === 5);
   }
   initializeWebSocketConnection() {
-    let ws = new SockJS(this.serverUrl);
+    const ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
-    let that = this;
+    const that = this;
     this.stompClient.connect({}, frame => {
       that.isLoaded = true;
       that.openGlobalSocket();
