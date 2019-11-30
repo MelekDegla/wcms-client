@@ -48,4 +48,8 @@ export class TaskService {
       headers: this.headers
     });
   }
+  findLogsByProjectId(id) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    return this.http.get(this.baseurl + 'logs/project/' + id, {headers: this.headers});
+  }
 }

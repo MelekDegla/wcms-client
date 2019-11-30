@@ -13,7 +13,7 @@ private task: Task = new Task();
 
   constructor(private taskService: TaskService, @Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<ModifyTaskComponent>) { }
   save() {
-    this.task.status = 1;
+
     // @ts-ignore
     this.task.project = {id: this.data.idproject};
     this.taskService.add(this.task).subscribe(res => {

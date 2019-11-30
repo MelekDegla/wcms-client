@@ -1,38 +1,100 @@
 <h1 mat-dialog-title>Add user</h1>
 <div mat-dialog-content>
+  <form [formGroup]="updForm">
   <mat-form-field style="width: 100%">
     <mat-label>cin</mat-label>
-    <input matInput cdkFocusInitial required [(ngModel)]="user.cin">
+    <input matInput cdkFocusInitial required [(ngModel)]="user.cin"  formControlName="cin" required minlength="8" maxlength="8">
+    <mat-error *ngIf="cin.invalid && (cin.dirty || cin.touched)">
+
+      <span *ngIf="cin.errors.required">
+        Cin is required !
+      </span>
+      <span *ngIf="cin.errors.minlength">
+        Cin must be 8 numbers long
+      </span>
+      <span *ngIf="cin.errors.maxlength">
+        Cin must be 8 characters long.
+      </span>
+
+      <span *ngIf="cin.errors.pattern">
+        Cin must be numeric
+      </span>
+
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>user name</mat-label>
-    <input matInput required [(ngModel)]="user.username">
+    <input matInput required [(ngModel)]="user.username" formControlName="username" required minlength="3">
+    <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+
+      <span *ngIf="username.errors.required">
+        Username is required !
+      </span>
+      <span *ngIf="username.errors.minlength">
+        Username must be at least 3 characters long
+      </span>
+
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>email</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="user.email">
+    <input matInput style="width: 100%" [(ngModel)]="user.email" formControlName="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required minlength="3">
+    <mat-error *ngIf=" email.invalid && (email.dirty || email.touched)" >
+      <span  *ngIf="email.errors.email">
+        Email is required !
+      </span>
+      <span *ngIf="email.errors.pattern">
+          Email must contain '@'
+      </span>
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
-    <input matInput [matDatepicker]="picker" placeholder="Birthdate" [(ngModel)]="user.birthdate">
+    <input matInput [matDatepicker]="picker" readonly placeholder="Birthdate" [(ngModel)]="user.birthdate" formControlName="birthdate" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)">
+      <div *ngIf="birthdate.errors.required">
+        Birth date is required.
+      </div>
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>leave balance</mat-label>
-    <input matInput type="number" style="width: 100%" [(ngModel)]="user.leaveBalance">
+    <input matInput type="number" style="width: 100%" [(ngModel)]="user.leaveBalance" formControlName="leaveBalance" required minlength="3">
+    <mat-error *ngIf="leaveBalance.invalid && (leaveBalance.dirty || leaveBalance.touched)">
+
+      <div *ngIf="leaveBalance.errors.required">
+        Leave Balance is required!
+
+      </div>
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>address</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="user.address">
+    <input matInput style="width: 100%" [(ngModel)]="user.address" formControlName="address" required minlength="5">
+    <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
+
+      <span *ngIf="address.errors.required">
+        Address is required !
+      </span>
+      <span *ngIf="address.errors.minlength">
+        Address must be at least 5 characters long.
+      </span>
+
+    </mat-error>
   </mat-form-field>
   <mat-form-field style="width: 100%">
     <mat-label>Salaire</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="user.salary">
+    <input matInput style="width: 100%" [(ngModel)]="user.salary" formControlName="salary" required>
+    <mat-error *ngIf="salary.invalid && (salary.dirty || salary.touched)">
+
+      <div *ngIf="salary.errors.required">
+        Salary is required !
+      </div>
+    </mat-error>
   </mat-form-field>
-  <mat-form-field style="width: 100%">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" style="width: 100%" [(ngModel)]="user.password">
-  </mat-form-field>
+
+  </form>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button >No Thanks</button>

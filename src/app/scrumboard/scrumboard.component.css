@@ -1,3 +1,7 @@
+:host{
+  height: 100%;
+}
+
 .example-container {
   margin: 0 25px 25px 0;
   display: inline-block;
@@ -62,12 +66,17 @@ h2{
 
 .ScrumBoardContainer
 {
+  height: 78vh;
   padding-top: 10px;
   padding-left: 10px;
 }
 
 .mat-card-container
 {
+
+  max-height: 70vh;
+  margin-right: 5px;
+  width: 200px;
   background: rgba(0,0,0,.06);
   padding: 12px 8px 9px 8px;
 }
@@ -95,5 +104,22 @@ mat-card mat-card mat-card-title
 .mat-card-tasks{
   min-height: 50px;
 }
+.ScrumBoardCol{
+  width: 200px;
+}
 
+.scrumSecondNavTitle{
+  color: white;
+  font-stretch: expanded;
+  font-family: 'Helvetica Neue',serif;
+  font-weight: lighter;
+}
+.mat-card-container  mat-card-header mat-card-title
+{
+  color: white;
+}
 
+.colbody{
+  overflow-y: auto;
+  max-height: 54vh
+}

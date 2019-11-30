@@ -1,207 +1,282 @@
-<div class="btn">
-    <button matTooltip="add employees" mat-fab color="primary" (click)="openDialogAddMembers()" >
-      <mat-icon style="color: white; font-size: 24px;">add </mat-icon>
-    </button>
-</div>
-<div class="ScrumBoardContainer">
-  <div class="row ScrumBoardRow" cdkDropListGroup>
-    <div class="col ScrumBoardCol">
 
-      <mat-card class="mat-card-container">
+<div style="padding-top: 10px; padding-bottom: 10px; padding-left: 15px; background: #334BAB">
+  <div class="row align-middle">
+    <div class="col-4 align-middle scrumSecondNavTitle" style="font-size: 1.6rem;">
+      <span>{{projectName}}</span>
+    </div>
+
+    <div class="col-5 align-middle" style="  font-size: 1.4rem;">
+      <span class="align-middle scrumSecondNavTitle">
+        We Code
+      </span>
+    </div>
+    <div class="col-3 align-middle">
+      <div class="row">
+        <div class="col-7">
+          <button mat-stroked-button color="accent" (click)="openDialogAddMembers()" style="background: white; float: right" > Add Member </button>
+        </div>
+        <div class="col-5">
+          <button mat-raised-button color="accent" style="float: right; right: 30px;" (click)="openBottomSheet()" >Show Menu</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--<div class="">
+
+  <mat-card matTooltip="add project" class="text-center" style="padding: 33px 0 33px 0;" (click)="openDialogAddMembers()">
+    <button mat-fab color="primary">
+      <mat-icon style="color: white; font-size: 24px;">add</mat-icon>
+    </button>
+  </mat-card>
+</div>
+<h3 style="color: #3C56B8; margin-top: 15px"><span>{{projectName}}</span><button mat-fab (click)="openDialog()" ><mat-icon>add</mat-icon></button></h3>
+<hr>-->
+<div class="ScrumBoardContainer" style="overflow-x: auto; height: 100%">
+  <div class="d-flex ScrumBoardRow" cdkDropListGroup>
+    <div class="col ScrumBoardCol" >
+
+
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Things To Do</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody" (contextmenu)="$event.preventDefault()"  cdkDropList
                           [cdkDropListData]="todo"
                           id="todo"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of todo" cdkDrag>
+          <mat-card *ngFor="let item of todo" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+
           </mat-card>
+
+          <!-- Add Task -->
 
 
         </mat-card-content>
+        <mat-card (click)="openDialog(1)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+
       </mat-card>
 
     </div>
 
     <div class="col ScrumBoardCol">
-      <mat-card class="mat-card-container">
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Doing</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody"  cdkDropList
                           [cdkDropListData]="inprogress"
                           id="inprogress"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of inprogress" cdkDrag>
+          <mat-card *ngFor="let item of inprogress" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+
           </mat-card>
 
+          <!-- Add Task -->
+
+
         </mat-card-content>
+        <mat-card (click)="openDialog(2)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
+
     </div>
 
     <div class="col ScrumBoardCol">
-      <mat-card class="mat-card-container">
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Testing</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody"   cdkDropList
                           [cdkDropListData]="toverify"
                           id="toverify"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of toverify" cdkDrag>
+          <mat-card *ngFor="let item of toverify" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
+
           </mat-card>
 
+          <!-- Add Task -->
+
+
         </mat-card-content>
+        <mat-card (click)="openDialog(3)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
     </div>
 
     <div class="col ScrumBoardCol">
-      <mat-card class="mat-card-container">
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Done</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody"  cdkDropList
                           [cdkDropListData]="done"
                           id="done"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of done" cdkDrag>
+          <mat-card *ngFor="let item of done" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
           </mat-card>
 
+          <!-- Add Task -->
+
+
         </mat-card-content>
+        <mat-card (click)="openDialog(4)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
     </div>
 
     <div class="col ScrumBoardCol">
-      <mat-card class="mat-card-container">
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Problems</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody"  cdkDropList
                           [cdkDropListData]="problems"
                           id="problems"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of problems" cdkDrag>
+          <mat-card *ngFor="let item of problems" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
           </mat-card>
 
+
+
         </mat-card-content>
+        <!-- Add Task -->
+        <mat-card (click)="openDialog(0)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
     </div>
 
     <div class="col ScrumBoardCol">
-      <mat-card class="mat-card-container">
+      <mat-card class="mat-card-container" style="background: #358BCC">
         <mat-card-header>
           <mat-card-title>Actions</mat-card-title>
         </mat-card-header>
-        <mat-card-content class="mat-card-tasks"  cdkDropList
+        <mat-card-content class="mat-card-tasks colbody"  cdkDropList
                           [cdkDropListData]="actions"
                           id="actions"
                           (cdkDropListDropped)="drop($event)"
         >
 
-          <mat-card *ngFor="let item of actions" cdkDrag>
+          <mat-card *ngFor="let item of actions" cdkDrag [matMenuTriggerFor]="menu" >
+            <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
+              <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
+            </mat-menu>
             <mat-card-title>{{item.label}}</mat-card-title>
             <mat-card-content>{{item.description}}</mat-card-content>
           </mat-card>
+          <!-- Add Task -->
+
 
         </mat-card-content>
+        <mat-card (click)="openDialog(5)" style="cursor: pointer; height: 45px;" >
+          <mat-card-content>
+            <mat-card-actions style=" transform: translateY(-21px)">
+              <button mat-icon-button><mat-icon>add</mat-icon></button>
+              <span>Add Task Here :D</span>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
       </mat-card>
     </div>
 
+    <!--  <div class="menuContainer mh-100">
+       <div class="menuTitle text-center">
+         <h5>Menu</h5>
+       </div>
+       <div class="menuList">
+
+       </div>
+
+      <div class="logHistory">
+         <div class="activity">
+           <i class="material-icons align-middle">
+             local_activity
+           </i>
+           <span class="align-middle menuItem" style="font-weight: bold">Activity</span>
+         </div>
+         <div class="logItems">
+           <div class="logItem" *ngFor="let log of logs;">
+             <span style="font-weight: inherit" *ngIf="log.newStatus != log.oldStatus; else newStatus"> {{log.name}} has {{log.action}} from {{log.oldStatus}} To {{log.newStatus}}  </span>
+             <ng-template #newStatus>
+               <span style="font-weight: inherit"> {{log.name}} has {{log.action}} a Task named {{log.task}}</span>
+             </ng-template>
+           </div>
+         </div>
+       </div>
+    </div>-->
+
   </div>
 </div>
-
-
-
-<!--<mat-card style="margin:50px; min-height: 70%">-->
-<!--  <mat-card-header>-->
-<!--    <mat-card-title>{{projectName}}</mat-card-title>-->
-<!--  </mat-card-header>-->
-<!--  <div cdkDropListGroup class="container-fluid">-->
-<!--    <div class="example-container col-2">-->
-<!--      <h2>To Do</h2>-->
-
-<!--      <div-->
-<!--        cdkDropList-->
-<!--        [cdkDropListData]="todo"-->
-<!--        class="example-list"-->
-<!--        id="todo"-->
-
-<!--        (cdkDropListDropped)="drop($event)">-->
-<!--        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.label}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="example-container col-2">-->
-<!--      <h2>In Progress</h2>-->
-
-<!--      <div-->
-<!--        cdkDropList-->
-<!--        id="inprogress"-->
-
-<!--        [cdkDropListData]="inprogress"-->
-<!--        class="example-list"-->
-<!--        (cdkDropListDropped)="drop($event)">-->
-<!--        <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item.label}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="example-container col-2" >-->
-<!--      <h2>To Verify</h2>-->
-
-<!--      <div-->
-<!--        cdkDropList-->
-<!--        [cdkDropListData]="toverify"-->
-<!--        id="toverify"-->
-
-<!--        class="example-list"-->
-<!--        (cdkDropListDropped)="drop($event)">-->
-<!--        <div class="example-box" *ngFor="let item of toverify" cdkDrag>{{item.label}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="example-container col-2" >-->
-<!--      <h2>Done</h2>-->
-
-<!--      <div-->
-<!--        cdkDropList-->
-<!--        [cdkDropListData]="done"-->
-<!--        class="example-list"-->
-<!--        id="done"-->
-
-<!--        (cdkDropListDropped)="drop($event)">-->
-<!--        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.label}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="example-container col-2">-->
-<!--      <h2>Problems</h2>-->
-
-<!--      <div-->
-<!--        cdkDropList-->
-<!--        [cdkDropListData]="problems"-->
-<!--        id="problems"-->
-<!--        class="example-list"-->
-<!--        (cdkDropListDropped)="drop($event)">-->
-<!--        <div class="example-box" *ngFor="let item of problems" cdkDrag>{{item.label}}</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</mat-card>-->

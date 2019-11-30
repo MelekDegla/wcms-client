@@ -1,4 +1,5 @@
 import {Project} from './Project';
+import {Log} from './Log';
 
 export class Task {
     id: number;
@@ -6,4 +7,6 @@ export class Task {
     description: string;
     status: number;
     project: Project;
+    logs: Log[];
+    constructor() {}
 }
