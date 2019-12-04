@@ -1,0 +1,18 @@
+<button mat-flat-button (click)="openDialogAdd()">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-list>
+  <mat-list-item *ngFor="let authorization of authorizations">
+    <h3 matLine> {{authorization.date}} </h3>
+    <h3 matLine> {{authorization.hourbegin}} </h3>
+    <h3 matLine> {{authorization.hourend}} </h3>
+    <h3 matLine> {{authorization.reason}} </h3>
+
+    <button mat-icon-button aria-label="Example icon-button with a heart icon">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="openDialogModify(authorization)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
