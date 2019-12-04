@@ -9,6 +9,7 @@ import * as SockJS from 'sockjs-client';
 import {environment} from '../../environments/environment';
 import {Notification} from '../models/Notification';
 import {MatSnackBar} from '@angular/material';
+import {User} from '../models/User';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -17,8 +18,7 @@ import {MatSnackBar} from '@angular/material';
 
 export class NavComponent implements OnInit {
   username = localStorage.username;
-  classlist1 = [];
-  classlist2 = ['list-item' , 'd-flex', 'justify-content-center'];
+  isAdmin = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
   isLoaded = false;
   notifNumber: number = 0;
   notifications: Notification[] = [];
+  private user: User;
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userService: UserService,
               private snackBar: MatSnackBar) {}
@@ -49,7 +50,12 @@ clicked(id, idr) {
       this.username = res.username;
       // @ts-ignore
       this.notifications = res.notifications;
+      // @ts-ignore
+      this.user = res;
       this.notifNumber = this.notifications.length;
+      // @ts-ignore
+      this.isAdmin = res.roles.filter( r => r.name === 'ADMIN').length > 0 ;
+      localStorage.isAdmin = this.isAdmin;
     });
     this.initializeWebSocketConnection();
   }

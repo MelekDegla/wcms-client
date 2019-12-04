@@ -6,6 +6,7 @@ import {NavComponent} from './nav/nav.component';
 import {ScrumboardComponent} from './scrumboard/scrumboard.component';
 import {UsersComponent} from './users/users.component';
 import {DashboardGuard} from './guards/dashboard.guard';
+import {AuthorizationComponent} from './authorization/authorization.component';
 
 
 const routes: Routes = [{
@@ -26,6 +27,9 @@ const routes: Routes = [{
     }, {
       path: 'users',
       component: UsersComponent
+    }, {
+    path: 'authorizations',
+      component: AuthorizationComponent
     }]
 }, {
   path: '**',

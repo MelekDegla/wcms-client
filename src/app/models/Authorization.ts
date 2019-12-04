@@ -1,11 +1,13 @@
 import {Time} from '@angular/common';
+import {User} from './User';
 
 export  class Authorization {
   id: number;
   date: Date;
-  hourbegin: Time;
-  hourend: Time;
+  beginhour: Time;
+  endhour: Time;
   reason: string;
+  user: User;
   constructor() {
   }
 }

@@ -23,7 +23,7 @@
         </div>
 
       </a>
-      <a mat-list-item (click)="clicked('u', 'p')" id="u"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
+      <a *ngIf="isAdmin" mat-list-item (click)="clicked('u', 'p')" id="u"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
 
         <div class="itemListContainer ">
           <div class="icon d-flex justify-content-center">
@@ -33,6 +33,20 @@
           </div>
           <div class="iconName">
             Collaborators
+          </div>
+        </div>
+
+      </a>
+      <a mat-list-item (click)="clicked('u', 'p')" id="uee"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/authorizations">
+
+        <div class="itemListContainer ">
+          <div class="icon d-flex justify-content-center">
+            <i class="material-icons ">
+              supervised_user_circle
+            </i>
+          </div>
+          <div class="iconName">
+            Authorizations
           </div>
         </div>
 

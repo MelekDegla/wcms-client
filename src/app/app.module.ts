@@ -12,7 +12,7 @@ import {
   MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDialogRef,
   MatIconModule,
-  MatInputModule, MatNativeDateModule, MatSnackBarModule,
+  MatInputModule, MatNativeDateModule, MatProgressBarModule, MatSnackBarModule,
   MatTableModule,
   MatTooltipModule, NativeDateModule
 } from '@angular/material';
@@ -49,9 +49,9 @@ import { MatBottomSheet } from '@angular/material';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { AddAuthorizationComponent } from './authorization/add-authorization/add-authorization.component';
 import { ModifyAuthorizationComponent } from './authorization/modify-authorization/modify-authorization.component';
-import { RemoveAuthorizationComponent } from './authorization/authorization/remove-authorization/remove-authorization.component';
 
 import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
+import {RemoveAuthorizationComponent} from './authorization/remove-authorization/remove-authorization.component';
 
 
 @NgModule({
@@ -77,7 +77,7 @@ import { DetailsTaskComponent } from './scrumboard/details-task/details-task.com
     AuthorizationComponent,
     AddAuthorizationComponent,
     ModifyAuthorizationComponent,
-    RemoveAuthorizationComponent
+    RemoveAuthorizationComponent,
     DetailsTaskComponent
   ],
   imports: [
@@ -111,7 +111,8 @@ import { DetailsTaskComponent } from './scrumboard/details-task/details-task.com
 
     MatCheckboxModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [UserService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
@@ -130,7 +131,13 @@ import { DetailsTaskComponent } from './scrumboard/details-task/details-task.com
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
-  DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent]
+  DeleteTaskComponent,
+    AddMembersComponent,
+    LogComponent,
+    DetailsTaskComponent,
+  AddAuthorizationComponent,
+  ModifyAuthorizationComponent,
+  RemoveAuthorizationComponent]
 
 })
 export class AppModule { }

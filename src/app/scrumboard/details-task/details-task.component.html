@@ -1,9 +1,14 @@
-<h1 mat-dialog-title>Details</h1>
+<mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+
+<h1 mat-dialog-title>Details of task {{task.label}}</h1>
 <div mat-dialog-content>
-  <mat-form-field style="width: 100%">
-    <mat-label>name</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="task.label">
-  </mat-form-field>
+  <input type="file" hidden  (change)="onFileChange($event.target.files)" name="file"  #fileInput>
+  <button mat-button (click)="fileInput.click()" >
+    <mat-icon style="transform: rotate(40deg)"  >attach_file</mat-icon> Add file
+  </button>
+  <div style="width: 100%; display: flex; justify-content: space-between"  *ngFor="let res of task.resources">
+    <span>{{res.name}}</span> <a mat-button href="{{res.url}}" download target="_blank" > download</a> </div>
+
   <mat-form-field style="width: 100%">
     <mat-label>description</mat-label>
     <input matInput style="width: 100%" [(ngModel)]="task.description">
@@ -13,6 +18,7 @@
     <input matInput style="width: 100%" [(ngModel)]="task.problem">
   </mat-form-field>
 </div>
+
 <div mat-dialog-actions align="end">
   <button mat-button >No Thanks</button>
   <button mat-flat-button (click)="modify()" >Ok</button>

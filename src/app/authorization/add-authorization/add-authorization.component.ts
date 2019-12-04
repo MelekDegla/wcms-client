@@ -12,6 +12,7 @@ export class AddAuthorizationComponent implements OnInit {
   authorization: Authorization ;
   constructor(public dialogRef: MatDialogRef<AddAuthorizationComponent>, private authorizationService: AuthorizationService) { }
   add() {
+    console.log(this.authorization);
     this.authorizationService.add(this.authorization).subscribe(res => {
       console.log(res);
       this.dialogRef.close();
