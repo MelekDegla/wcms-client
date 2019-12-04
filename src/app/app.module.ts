@@ -9,7 +9,7 @@ import {
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
   MAT_DATE_LOCALE, MatBadgeModule, MatBottomSheetModule,
   MatButtonModule,
-  MatCardModule, MatDatepickerModule,
+  MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDialogRef,
   MatIconModule,
   MatInputModule, MatNativeDateModule, MatSnackBarModule,
@@ -41,7 +41,6 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
 
 
-import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
 import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
@@ -51,6 +50,8 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { AddAuthorizationComponent } from './authorization/add-authorization/add-authorization.component';
 import { ModifyAuthorizationComponent } from './authorization/modify-authorization/modify-authorization.component';
 import { RemoveAuthorizationComponent } from './authorization/authorization/remove-authorization/remove-authorization.component';
+
+import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
 
 
 @NgModule({
@@ -72,10 +73,12 @@ import { RemoveAuthorizationComponent } from './authorization/authorization/remo
     ModifyTaskComponent,
     DeleteTaskComponent,
     LogComponent,
+
     AuthorizationComponent,
     AddAuthorizationComponent,
     ModifyAuthorizationComponent,
     RemoveAuthorizationComponent
+    DetailsTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -127,7 +130,7 @@ import { RemoveAuthorizationComponent } from './authorization/authorization/remo
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
-  DeleteTaskComponent, AddMembersComponent, LogComponent]
+  DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent]
 
 })
 export class AppModule { }
