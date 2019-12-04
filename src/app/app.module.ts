@@ -9,7 +9,7 @@ import {
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
   MAT_DATE_LOCALE, MatBadgeModule, MatBottomSheetModule,
   MatButtonModule,
-  MatCardModule, MatDatepickerModule,
+  MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDialogRef,
   MatIconModule,
   MatInputModule, MatNativeDateModule, MatSnackBarModule,
@@ -41,12 +41,12 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import { AddMembersComponent } from './scrumboard/add-members/add-members.component';
 
 
-import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AddTaskComponent } from './scrumboard/add-task/add-task.component';
 import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.component';
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 import { LogComponent } from './scrumboard/log/log.component';
 import { MatBottomSheet } from '@angular/material';
+import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
 
 
 @NgModule({
@@ -67,7 +67,8 @@ import { MatBottomSheet } from '@angular/material';
     AddTaskComponent,
     ModifyTaskComponent,
     DeleteTaskComponent,
-    LogComponent
+    LogComponent,
+    DetailsTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +120,7 @@ import { MatBottomSheet } from '@angular/material';
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
-  DeleteTaskComponent, AddMembersComponent, LogComponent]
+  DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent]
 
 })
 export class AppModule { }

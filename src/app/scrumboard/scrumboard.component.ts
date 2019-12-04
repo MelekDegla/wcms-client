@@ -21,6 +21,7 @@ import {ModifyTaskComponent} from './modify-task/modify-task.component';
 import {DeleteTaskComponent} from './delete-task/delete-task.component';
 import {Log} from '../models/Log';
 import {LogComponent} from './log/log.component';
+import {DetailsTaskComponent} from './details-task/details-task.component';
 
 
 @Component({
@@ -195,4 +196,17 @@ export class ScrumboardComponent implements OnInit {
 
   }
 
+  openDialogDetails(id: number) {
+    const dialogRef = this.dialog.open(DetailsTaskComponent, {
+      width: '400px',
+      data: {
+        id,
+        idproject: this.actR.snapshot.params.id
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
 }

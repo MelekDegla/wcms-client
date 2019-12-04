@@ -8,5 +8,6 @@ export class Task {
     status: number;
     project: Project;
     logs: Log[];
+    problem: string;
     constructor() {}
 }

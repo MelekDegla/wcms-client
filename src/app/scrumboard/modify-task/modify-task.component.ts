@@ -10,8 +10,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 })
 export class ModifyTaskComponent implements OnInit {
 private task: Task = new Task();
-
-  constructor(private taskService: TaskService, @Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<ModifyTaskComponent>) { }
+  constructor(private taskService: TaskService,
+              @Inject(MAT_DIALOG_DATA) private data: any,
+              private dialogRef: MatDialogRef<ModifyTaskComponent>) { }
   save() {
 
     // @ts-ignore
@@ -23,7 +24,7 @@ private task: Task = new Task();
     });
   }
   ngOnInit() {
-    this.taskService.findById(this.data.id).subscribe(res =>{
+    this.taskService.findById(this.data.id).subscribe(res => {
       this.task = res;
     });
   }
