@@ -47,6 +47,10 @@ import {ModifyTaskComponent} from './scrumboard/modify-task/modify-task.componen
 import { DeleteTaskComponent } from './scrumboard/delete-task/delete-task.component';
 import { LogComponent } from './scrumboard/log/log.component';
 import { MatBottomSheet } from '@angular/material';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { AddAuthorizationComponent } from './authorization/add-authorization/add-authorization.component';
+import { ModifyAuthorizationComponent } from './authorization/modify-authorization/modify-authorization.component';
+import { RemoveAuthorizationComponent } from './authorization/authorization/remove-authorization/remove-authorization.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { MatBottomSheet } from '@angular/material';
     AddTaskComponent,
     ModifyTaskComponent,
     DeleteTaskComponent,
-    LogComponent
+    LogComponent,
+    AuthorizationComponent,
+    AddAuthorizationComponent,
+    ModifyAuthorizationComponent,
+    RemoveAuthorizationComponent
   ],
   imports: [
     BrowserModule,
