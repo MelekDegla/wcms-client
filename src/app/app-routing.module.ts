@@ -6,6 +6,8 @@ import {NavComponent} from './nav/nav.component';
 import {ScrumboardComponent} from './scrumboard/scrumboard.component';
 import {UsersComponent} from './users/users.component';
 import {DashboardGuard} from './guards/dashboard.guard';
+import {SettingsComponent} from './settings/settings.component';
+import {HolidaysComponent} from './holidays/holidays.component';
 
 
 const routes: Routes = [{
@@ -26,7 +28,16 @@ const routes: Routes = [{
     }, {
       path: 'users',
       component: UsersComponent
-    }]
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent
+    },
+    {
+      path: 'conges',
+      component: HolidaysComponent
+    }
+  ]
 }, {
   path: '**',
   component: LoginComponent

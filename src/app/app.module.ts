@@ -49,9 +49,12 @@ import { MatBottomSheet } from '@angular/material';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { AddAuthorizationComponent } from './authorization/add-authorization/add-authorization.component';
 import { ModifyAuthorizationComponent } from './authorization/modify-authorization/modify-authorization.component';
-import { RemoveAuthorizationComponent } from './authorization/authorization/remove-authorization/remove-authorization.component';
-
 import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
+import { SettingsComponent } from './settings/settings.component';
+import { HolidaysComponent } from './holidays/holidays.component';
+import { AddHolidaysComponent } from './holidays/add-holidays/add-holidays.component';
+import { ModifyHolidaysComponent } from './holidays/modify-holidays/modify-holidays.component';
+import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holidays.component';
 
 
 @NgModule({
@@ -77,8 +80,12 @@ import { DetailsTaskComponent } from './scrumboard/details-task/details-task.com
     AuthorizationComponent,
     AddAuthorizationComponent,
     ModifyAuthorizationComponent,
-    RemoveAuthorizationComponent
-    DetailsTaskComponent
+    DetailsTaskComponent,
+    SettingsComponent,
+    HolidaysComponent,
+    AddHolidaysComponent,
+    ModifyHolidaysComponent,
+    RemoveHolidaysComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +137,8 @@ import { DetailsTaskComponent } from './scrumboard/details-task/details-task.com
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
-  DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent]
+  DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent, AddHolidaysComponent,
+  ModifyHolidaysComponent, RemoveHolidaysComponent]
 
 })
 export class AppModule { }

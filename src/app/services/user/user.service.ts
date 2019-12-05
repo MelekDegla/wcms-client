@@ -44,7 +44,7 @@ export class UserService {
 
   modify(user) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.http.put(this.baseurl + 'users/', user , {
+    return this.http.put(this.baseurl + 'users', user , {
       headers: this.headers
     });
   }
