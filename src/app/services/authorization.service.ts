@@ -14,26 +14,26 @@ private  baseUrl = environment.webservice.baseUrl ;
   constructor(private  Http: HttpClient) { }
   add(authorization: Authorization) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.Http.post(this.baseUrl + '/authorization', authorization, {
+    return this.Http.post(this.baseUrl + 'authorization', authorization, {
       headers: this.headers
     });
   }
   list(): Observable<any> {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.Http.get(this.baseUrl + '/authorization', {
+    return this.Http.get(this.baseUrl + 'authorization', {
       headers: this.headers
     });
   }
   remove(id: number) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.Http.delete(this.baseUrl + '/authorization/' + id, {
+    return this.Http.delete(this.baseUrl + 'authorization/' + id, {
       headers: this.headers
     });
   }
 
   modify(authorization: Authorization) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
-    return this.Http.put(this.baseUrl + '/authorization', authorization , {
+    return this.Http.put(this.baseUrl + 'authorization', authorization , {
       headers: this.headers
     });
   }

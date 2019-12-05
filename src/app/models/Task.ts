@@ -1,5 +1,6 @@
 import {Project} from './Project';
 import {Log} from './Log';
+import {Resource} from './Resource';
 
 export class Task {
     id: number;
@@ -9,5 +10,6 @@ export class Task {
     project: Project;
     logs: Log[];
     problem: string;
+    resources: Resource[];
     constructor() {}
 }

@@ -9,6 +9,8 @@ import {DashboardGuard} from './guards/dashboard.guard';
 import {SettingsComponent} from './settings/settings.component';
 import {HolidaysComponent} from './holidays/holidays.component';
 
+import {AuthorizationComponent} from './authorization/authorization.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -37,7 +39,11 @@ const routes: Routes = [{
       path: 'conges',
       component: HolidaysComponent
     }
-  ]
+
+ , {
+    path: 'authorizations',
+      component: AuthorizationComponent
+    }]
 }, {
   path: '**',
   component: LoginComponent

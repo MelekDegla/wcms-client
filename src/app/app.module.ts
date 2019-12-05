@@ -12,7 +12,7 @@ import {
   MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatDialogRef,
   MatIconModule,
-  MatInputModule, MatNativeDateModule, MatSnackBarModule,
+  MatInputModule, MatNativeDateModule, MatProgressBarModule, MatSnackBarModule,
   MatTableModule,
   MatTooltipModule, NativeDateModule
 } from '@angular/material';
@@ -57,6 +57,10 @@ import { ModifyHolidaysComponent } from './holidays/modify-holidays/modify-holid
 import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holidays.component';
 
 
+import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
+import {RemoveAuthorizationComponent} from './authorization/remove-authorization/remove-authorization.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +90,10 @@ import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holid
     AddHolidaysComponent,
     ModifyHolidaysComponent,
     RemoveHolidaysComponent
+
+    RemoveAuthorizationComponent,
+    DetailsTaskComponent
+
   ],
   imports: [
     BrowserModule,
@@ -118,7 +126,8 @@ import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holid
 
     MatCheckboxModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [UserService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
@@ -137,8 +146,15 @@ import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holid
     RemoveUserComponent,
   AddTaskComponent,
   ModifyTaskComponent,
+
   DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent, AddHolidaysComponent,
-  ModifyHolidaysComponent, RemoveHolidaysComponent]
+  ModifyHolidaysComponent, RemoveHolidaysComponent,
+  DeleteTaskComponent,
+    
+  AddAuthorizationComponent,
+  ModifyAuthorizationComponent,
+  RemoveAuthorizationComponent]
+
 
 })
 export class AppModule { }

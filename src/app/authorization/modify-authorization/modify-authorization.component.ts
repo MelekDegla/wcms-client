@@ -19,7 +19,10 @@ export class ModifyAuthorizationComponent implements OnInit {
   }
 
   modify() {
-    this.authService.modify(this.data.id).subscribe(res => {
+    if (this.auth.date instanceof Date){
+      this.auth.date.setHours(10);
+    }
+    this.authService.modify(this.auth).subscribe(res => {
       this.dialogRef.close();
     });
   }
