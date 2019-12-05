@@ -33,11 +33,10 @@ export class NavComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userService: UserService,
               private snackBar: MatSnackBar) {}
-clicked(id, idr) {
-    document.getElementById(id).classList.add('active');
-    document.getElementById(idr).classList.remove('active');
-
-}
+clicked(x) {
+  document.getElementsByClassName('active')[0].classList.remove('active');
+  x.classList.add('active');
+  }
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');

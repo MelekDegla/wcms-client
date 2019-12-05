@@ -16,6 +16,7 @@ export class AuthorizationComponent implements OnInit {
   authorizations: [Authorization] ;
   displayedColumns: string[] = ['username', 'reason', 'date', 'begin hour', 'end hour', 'actions'];
   dataSource ;
+  isAdmin = localStorage.isAdmin === 'true';
   constructor(public dialog: MatDialog, private authorizationService: AuthorizationService) { }
 
   ngOnInit() {

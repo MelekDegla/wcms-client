@@ -9,7 +9,7 @@
       </div>
     </mat-toolbar>
     <mat-nav-list >
-      <a mat-list-item (click)="clicked('p', 'u')" id="p" routerLink="/dashboard" class="list-item d-flex justify-content-center active"  >
+      <a mat-list-item onclick="document.getElementsByClassName('active')[0].classList.remove('active');this.classList.add('active')" routerLink="/dashboard" class="list-item d-flex justify-content-center active"  >
 
         <div class="itemListContainer" >
           <div class="icon">
@@ -23,7 +23,7 @@
         </div>
 
       </a>
-      <a *ngIf="isAdmin" mat-list-item (click)="clicked('u', 'p')" id="u"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
+      <a *ngIf="isAdmin" mat-list-item  onclick="document.getElementsByClassName('active')[0].classList.remove('active');this.classList.add('active')" class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/users">
 
         <div class="itemListContainer ">
           <div class="icon d-flex justify-content-center">
@@ -37,7 +37,7 @@
         </div>
 
       </a>
-      <a mat-list-item (click)="clicked('u', 'p')" id="uee"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/authorizations">
+      <a mat-list-item  onclick="document.getElementsByClassName('active')[0].classList.remove('active');this.classList.add('active')"  class="list-item d-flex justify-content-center" style="margin-top:15px " routerLink="/dashboard/authorizations">
 
         <div class="itemListContainer ">
           <div class="icon d-flex justify-content-center">
