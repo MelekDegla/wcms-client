@@ -27,15 +27,17 @@ export class NavComponent implements OnInit {
   private stompClient: any;
   private serverUrl: string = environment.webservice.baseUrl + 'socket';
   isLoaded = false;
-  notifNumber: number = 0;
+  notifNumber = 0;
   notifications: Notification[] = [];
   private user: User;
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router, private userService: UserService,
               private snackBar: MatSnackBar) {}
-clicked(id, idr) {
+clicked(id, idr, idSr, f) {
     document.getElementById(id).classList.add('active');
     document.getElementById(idr).classList.remove('active');
+    document.getElementById(idSr).classList.remove('active');
+    document.getElementById(f).classList.remove('active');
 
 }
   logout() {
