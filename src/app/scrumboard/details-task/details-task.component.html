@@ -13,7 +13,7 @@
     <mat-label>description</mat-label>
     <input matInput style="width: 100%" [(ngModel)]="task.description">
   </mat-form-field>
-  <mat-form-field style="width: 100%">
+  <mat-form-field style="width: 100%" *ngIf="task.status== 0">
     <mat-label>problem</mat-label>
     <input matInput style="width: 100%" [(ngModel)]="task.problem">
   </mat-form-field>

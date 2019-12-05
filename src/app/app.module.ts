@@ -57,7 +57,6 @@ import { ModifyHolidaysComponent } from './holidays/modify-holidays/modify-holid
 import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holidays.component';
 
 
-import { DetailsTaskComponent } from './scrumboard/details-task/details-task.component';
 import {RemoveAuthorizationComponent} from './authorization/remove-authorization/remove-authorization.component';
 
 
@@ -84,12 +83,11 @@ import {RemoveAuthorizationComponent} from './authorization/remove-authorization
     AuthorizationComponent,
     AddAuthorizationComponent,
     ModifyAuthorizationComponent,
-    DetailsTaskComponent,
     SettingsComponent,
     HolidaysComponent,
     AddHolidaysComponent,
     ModifyHolidaysComponent,
-    RemoveHolidaysComponent
+    RemoveHolidaysComponent,
 
     RemoveAuthorizationComponent,
     DetailsTaskComponent
@@ -150,7 +148,7 @@ import {RemoveAuthorizationComponent} from './authorization/remove-authorization
   DeleteTaskComponent, AddMembersComponent, LogComponent, DetailsTaskComponent, AddHolidaysComponent,
   ModifyHolidaysComponent, RemoveHolidaysComponent,
   DeleteTaskComponent,
-    
+
   AddAuthorizationComponent,
   ModifyAuthorizationComponent,
   RemoveAuthorizationComponent]

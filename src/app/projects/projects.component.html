@@ -27,11 +27,11 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="col-4">
+    <div class="col-4" *ngIf="isAdmin">
       <div>
         <mat-card matTooltip="add project" class="text-center" style="padding: 33px 0 33px 0;" (click)="openDialog()">
           <button mat-fab color="primary">
-            <mat-icon style="color: white; font-size: 24px;">add </mat-icon>
+            <mat-icon style="color: white; font-size: 24px;">add</mat-icon>
           </button>
         </mat-card>
       </div>

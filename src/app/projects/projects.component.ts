@@ -13,6 +13,7 @@ import {ModifyProjectComponent} from './modify-project/modify-project.component'
 })
 export class ProjectsComponent implements OnInit {
   projects: [Project];
+  isAdmin = localStorage.isAdmin === 'true';
   constructor(public dialog: MatDialog, private projectService: ProjectService) {}
 
   openDialog(): void {

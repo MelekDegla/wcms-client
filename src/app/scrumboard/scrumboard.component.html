@@ -50,6 +50,8 @@
 
           <mat-card *ngFor="let item of todo" cdkDrag [matMenuTriggerFor]="menu" >
             <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogDetails(item.id)"><mat-icon color="primary">visibility</mat-icon> details</button>
+
               <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
               <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
             </mat-menu>
@@ -88,6 +90,8 @@
 
           <mat-card *ngFor="let item of inprogress" cdkDrag [matMenuTriggerFor]="menu" >
             <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogDetails(item.id)"><mat-icon color="primary">visibility</mat-icon> details</button>
+
               <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
               <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
             </mat-menu>
@@ -125,6 +129,8 @@
 
           <mat-card *ngFor="let item of toverify" cdkDrag [matMenuTriggerFor]="menu" >
             <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogDetails(item.id)"><mat-icon color="primary">visibility</mat-icon> details</button>
+
               <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
               <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
             </mat-menu>
@@ -161,6 +167,8 @@
 
           <mat-card *ngFor="let item of done" cdkDrag [matMenuTriggerFor]="menu" >
             <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogDetails(item.id)"><mat-icon color="primary">visibility</mat-icon> details</button>
+
               <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
               <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
             </mat-menu>
@@ -232,6 +240,8 @@
 
           <mat-card *ngFor="let item of actions" cdkDrag [matMenuTriggerFor]="menu" >
             <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+              <button mat-menu-item (click)="openDialogDetails(item.id)"><mat-icon color="primary">visibility</mat-icon> details</button>
+
               <button mat-menu-item (click)="openDialogModify(item.id)" ><mat-icon color="primary">edit</mat-icon>edit</button>
               <button mat-menu-item (click)="openDialogDelete(item.id)"><mat-icon color="primary">delete</mat-icon>remove</button>
             </mat-menu>

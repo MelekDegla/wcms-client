@@ -51,7 +51,6 @@ export class NavComponent implements OnInit {
       this.notifNumber = this.notifications.length;
       // @ts-ignore
       this.isAdmin = res.roles.filter( r => r.name === 'ADMIN').length > 0 ;
-      localStorage.isAdmin = this.isAdmin;
     });
     this.initializeWebSocketConnection();
   }
@@ -69,7 +68,6 @@ export class NavComponent implements OnInit {
   }
   openGlobalSocket() {
     this.stompClient.subscribe('/notifications/' + this.username, (res) => {
-      console.log(res);
       this.notifications.push(JSON.parse(res.body));
       this.notifNumber++;
       let audio = new Audio();

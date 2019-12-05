@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
   states = {};
   hide = true;
   login: Login;
+  private isAdmin = false;
   constructor(  private userService: UserService, private authService: AuthenticationService, private router: Router) {
     this.states['state1'] = 'shakestart';
   }
@@ -64,6 +65,9 @@ export class LoginComponent implements OnInit {
       this.userService.findUserWithToken().subscribe(result => {
         // @ts-ignore
         localStorage.username = result.username;
+        // @ts-ignore
+        this.isAdmin = result.roles.filter( r => r.name === 'ADMIN').length > 0 ;
+        localStorage.isAdmin = this.isAdmin;
       });
     }, err => {
       this.shakeMe('state1');
