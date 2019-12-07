@@ -10,12 +10,27 @@ import {SettingsComponent} from './settings/settings.component';
 import {HolidaysComponent} from './holidays/holidays.component';
 
 import {AuthorizationComponent} from './authorization/authorization.component';
+import {MainComponent} from './main/main.component';
+import {HomeComponent} from './home/home.component';
 
 
 const routes: Routes = [{
   path: '',
   component: LoginComponent,
  }, {
+  path: 'main',
+  component: MainComponent,
+  children: [{
+    path: '',
+    component: HomeComponent
+  }, {
+    path: 'projects',
+    component: ProjectsComponent
+  }, {
+    path: 'scrumboard/:id',
+    component: ScrumboardComponent
+  }]
+},   {
   path: 'dashboard',
   component: NavComponent,
   canActivate: [DashboardGuard],

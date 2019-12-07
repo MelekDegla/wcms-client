@@ -1,0 +1,13 @@
+mat-card:hover{
+  color: white;
+  background-color: #334BAB;
+
+}
+mat-card{
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.8s;
+  color: #334BAB;
+
+}

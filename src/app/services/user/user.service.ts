@@ -66,6 +66,10 @@ export class UserService {
     return this.http.post(this.baseurl + 'userprojects', userProject , {headers: this.headers});
   }
 
+  viewNotification() {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
 
+    return this.http.get(this.baseurl + 'notifs/viewed' , {headers: this.headers});
+  }
 
 }

@@ -58,6 +58,9 @@ import { RemoveHolidaysComponent } from './holidays/remove-holidays/remove-holid
 
 
 import {RemoveAuthorizationComponent} from './authorization/remove-authorization/remove-authorization.component';
+import { MainComponent } from './main/main.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -90,7 +93,10 @@ import {RemoveAuthorizationComponent} from './authorization/remove-authorization
     RemoveHolidaysComponent,
 
     RemoveAuthorizationComponent,
-    DetailsTaskComponent
+    DetailsTaskComponent,
+    MainComponent,
+    ToolbarComponent,
+    HomeComponent
 
   ],
   imports: [

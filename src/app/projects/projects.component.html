@@ -1,4 +1,3 @@
-
 <mat-card style="margin: 50px; height: 70%">
 <mat-card-header >
   <mat-card-title>
@@ -23,7 +22,7 @@
           <button mat-icon-button matTooltip="remove {{project.name}}" (click)="openDialogRemove(project.id)"><mat-icon color="warn">delete</mat-icon></button>
 
           </span>
-          <button mat-flat-button matTooltip="open scrum board of  {{project.name}}" color="primary" [routerLink]="['scrumboard', project.id]"> View <mat-icon>visibility</mat-icon></button>
+          <button mat-flat-button matTooltip="open scrum board of  {{project.name}}" color="primary" [routerLink]="['../scrumboard', project.id]"> View <mat-icon>visibility</mat-icon></button>
         </mat-card-actions>
       </mat-card>
     </div>

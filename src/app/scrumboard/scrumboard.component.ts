@@ -189,7 +189,7 @@ export class ScrumboardComponent implements OnInit {
     });
   }
     openGlobalSocket() {
-    this.stompClient.subscribe('/socket-front-project', (res) => {
+    this.stompClient.subscribe('/socket-front-project/' + this.project.id, (res) => {
       this.orderTasks(JSON.parse(res.body));
 
     });

@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" style="display: flex; justify-content: space-between">
+
+   <div></div>
+  <div>
+
+    <button mat-icon-button [matMenuTriggerFor]="notif" (click)="viewNotifs()" ><mat-icon [matBadge]="notifNumber" matBadgeColor="accent" matBadgePosition="above before" matBadgeSize="medium">notifications</mat-icon></button>
+    <button matTooltip="click to drop down " mat-button [matMenuTriggerFor]="menu"> <mat-icon style="font-size: 20px">person</mat-icon> <span>{{username}}</span> <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <mat-menu #notif="matMenu">
+      <div   *ngFor="let n of notifications.reverse()" [routerLink]="n.link"  style="display: flex; flex-direction: column; border-bottom: black 1px solid" >
+        <div style="display: flex; justify-content: space-between">
+          <div style="padding: 5px; color: #3C56B8"> {{n.title}} </div>
+          <div></div>
+        </div>
+
+        <div style=" padding: 10px">{{n.body}} </div>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>
