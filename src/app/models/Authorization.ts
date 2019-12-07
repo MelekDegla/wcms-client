@@ -8,6 +8,8 @@ export  class Authorization {
   endhour: Time;
   reason: string;
   user: User;
+    status: number;
+   rejectionReason: string;
   constructor() {
   }
 }

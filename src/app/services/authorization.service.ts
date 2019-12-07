@@ -37,5 +37,11 @@ private  baseUrl = environment.webservice.baseUrl ;
       headers: this.headers
     });
   }
+  validate(authorization: Authorization) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    return this.Http.put(this.baseUrl + 'authorization/validate', authorization , {
+      headers: this.headers
+    });
+  }
 
 }
