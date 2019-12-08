@@ -1,104 +1,125 @@
-<div class="container" style="margin-top: 10px;">
+<div class="container" style="padding-top: 20px;">
+  <h2 style="color: #358BCC">Profile Information</h2>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Password
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <input type="text" class="form-control" placeholder="Old Password" [(ngModel)]="userPass.oldPassword" >
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="New Password" [(ngModel)]="newPass">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Confirm Password" [(ngModel)]="userPass.newPassword">
+              </div>
+              <ng-container *ngIf="changed == false || newPass != userPass.newPassword">
+                <mat-error>
+                  <div *ngIf="changed == false">
+                     * Verify Old Password
+                  </div>
+                  <div *ngIf="newPass != userPass.newPassword">
+                    * The Password Confirmation must match your new Password
+                  </div>
+                </mat-error>
+              </ng-container>
+            </div>
+            <button mat-raised-button color="accent" style="float: right" (click)="changePassword()">Modify</button>
+          </mat-expansion-panel>
+        </div>
+        <div class="w-100" style="padding-top: 25px;"></div>
+        <div class="col">
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Social Media
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+              <label class="col-sm-2 col-form-label col-form-label">Linkedin</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.linkedin">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Facebook</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.facebook">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Instagram</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.instagram">
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </div>
+      </div>
 
-  <mat-card>
-    <h4>Modify user</h4>
-    <form [formGroup]="updForm">
-      <mat-form-field style="width: 100%">
-        <mat-label>cin</mat-label>
-        <input matInput cdkFocusInitial required [(ngModel)]="user.cin"  formControlName="cin" required minlength="8" maxlength="8">
-        <mat-error *ngIf="cin.invalid && (cin.dirty || cin.touched)">
-
-      <span *ngIf="cin.errors.required">
-        Cin is required !
-      </span>
-          <span *ngIf="cin.errors.minlength">
-        Cin must be 8 numbers long
-      </span>
-          <span *ngIf="cin.errors.maxlength">
-        Cin must be 8 characters long.
-      </span>
-
-          <span *ngIf="cin.errors.pattern">
-        Cin must be numeric
-      </span>
-
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>user name</mat-label>
-        <input matInput required [(ngModel)]="user.username" formControlName="username" required minlength="3" readonly>
-        <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
-
-      <span *ngIf="username.errors.required">
-        Username is required !
-      </span>
-          <span *ngIf="username.errors.minlength">
-        Username must be at least 3 characters long
-      </span>
-
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>email</mat-label>
-        <input matInput style="width: 100%" [(ngModel)]="user.email" formControlName="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required minlength="3">
-        <mat-error *ngIf=" email.invalid && (email.dirty || email.touched)" >
-      <span  *ngIf="email.errors.email">
-        Email is required !
-      </span>
-          <span *ngIf="email.errors.pattern">
-          Email must contain '@'
-      </span>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <input matInput [matDatepicker]="picker" readonly placeholder="Birthdate" [(ngModel)]="user.birthdate" formControlName="birthdate" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)">
-          <div *ngIf="birthdate.errors.required">
-            Birth date is required.
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Personal Data
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="form-row">
+              <label class="col-sm-2 col-form-label col-form-label">Username</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" placeholder="Username" readonly [(ngModel)]="user.username">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Id Number</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.cin">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">First Name</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.firstName">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Last Name</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.lastName">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Birth date</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.birthdate">
+              </div>
+              <label class="col-sm-2 col-form-label col-form-label">Address</label>
+              <div class="form-group col-md-10">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="user.address">
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </div>
+      <div class="w-100" style="padding-top: 25px;"></div>
+      <div class="col-12">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Bank Information
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="form-row">
+            <label class="col-sm-2 col-form-label col-form-label">RIB</label>
+            <div class="form-group col-md-10">
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="user.rib">
+            </div>
           </div>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>leave balance</mat-label>
-        <input matInput type="number" style="width: 100%" [(ngModel)]="user.leaveBalance" formControlName="leaveBalance" required minlength="3">
-        <mat-error *ngIf="leaveBalance.invalid && (leaveBalance.dirty || leaveBalance.touched)">
+        </mat-expansion-panel>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div style="padding-top: 25px">
+    <button mat-raised-button color="accent" style="float: right">Reset</button>
+    <button mat-raised-button color="primary" style="float: right; margin-right: 7px" (click)="modify()">Save</button>
+  </div>
 
-          <div *ngIf="leaveBalance.errors.required">
-            Leave Balance is required!
-
-          </div>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>address</mat-label>
-        <input matInput style="width: 100%" [(ngModel)]="user.address" formControlName="address" required minlength="5">
-        <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
-
-      <span *ngIf="address.errors.required">
-        Address is required !
-      </span>
-          <span *ngIf="address.errors.minlength">
-        Address must be at least 5 characters long.
-      </span>
-
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field style="width: 100%">
-        <mat-label>Salaire</mat-label>
-        <input matInput style="width: 100%" [(ngModel)]="user.salary" formControlName="salary" required>
-        <mat-error *ngIf="salary.invalid && (salary.dirty || salary.touched)">
-
-          <div *ngIf="salary.errors.required">
-            Salary is required !
-          </div>
-        </mat-error>
-      </mat-form-field>
-
-    </form>
-    <mat-card-actions>
-      <button mat-flat-button   (click)="modify()" color="primary">Save</button>
-    </mat-card-actions>
-  </mat-card>
 </div>

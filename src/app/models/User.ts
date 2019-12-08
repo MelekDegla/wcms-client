@@ -5,6 +5,8 @@ import {Authorization} from './Authorization';
 export class User {
   id: number;
   username: string;
+  firstName: string;
+  lastName: string;
   password: string;
   salary: number;
   birthdate: string;
@@ -12,6 +14,10 @@ export class User {
   leaveBalance: number;
   cin: string;
   email: string;
+  rib: string;
+  facebook: string;
+  instagram: string;
+  linkedin: string;
   roles: string[];
   notifications: Notification[];
   userProjects: UserProject[];

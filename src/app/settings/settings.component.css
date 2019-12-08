@@ -1,0 +1,15 @@
+mat-panel-title {
+  color: #3C56B8;
+  font-weight: bold;
+  font-family: Noto, serif;
+  font-size: 18px;
+}
+mat-expansion-panel {
+  border-left: #358BCC 4px solid;
+}
+button {
+  width: 80px;
+}
+h2 {
+  font-family: "Helvetica Neue", serif;
+}

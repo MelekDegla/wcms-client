@@ -4,7 +4,7 @@
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 <mat-form-field class="example-full-width">
-  <input matInput  [matDatepicker]="picker1" placeholder="End Date" value="reason" [(ngModel)]="holiday.endDate">
+  <input matInput  [matDatepicker]="picker1" placeholder="End Date" [(ngModel)]="holiday.endDate">
   <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
   <mat-datepicker #picker1></mat-datepicker>
 </mat-form-field>
