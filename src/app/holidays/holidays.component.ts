@@ -5,6 +5,7 @@ import {HolidaysService} from '../services/holidays/holidays.service';
 import {AddHolidaysComponent} from './add-holidays/add-holidays.component';
 import {RemoveHolidaysComponent} from './remove-holidays/remove-holidays.component';
 import {ModifyHolidaysComponent} from './modify-holidays/modify-holidays.component';
+import {AcceptHolidysComponent} from './accept-holidys/accept-holidys.component';
 
 @Component({
   selector: 'app-holidays',
@@ -16,6 +17,7 @@ export class HolidaysComponent implements OnInit {
   holiday: [Holiday];
   displayedColumns: string[] = ['username', 'Start Date', 'End Date', 'Status', 'actions'];
   dataSource;
+  isAdmin = localStorage.isAdmin === 'true';
   constructor(public dialog: MatDialog, private holidayService: HolidaysService) { }
 
   ngOnInit() {
@@ -52,5 +54,23 @@ export class HolidaysComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openDialogAccept(idr): void {
+    const dialogRef = this.dialog.open(AcceptHolidysComponent, {
+      width: '400px',
+      data: {
+        id: idr
+      }
+    });
+    dialogRef.afterClosed().subscribe(r => this.ngOnInit());
+  }
+  openDialogRefuse(idr): void {
+    const dialogRef = this.dialog.open(RemoveHolidaysComponent, {
+      width: '400px',
+      data: {
+        id: idr
+      }
+    });
+    dialogRef.afterClosed().subscribe(r => this.ngOnInit());
   }
 }

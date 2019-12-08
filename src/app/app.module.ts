@@ -61,6 +61,10 @@ import {RemoveAuthorizationComponent} from './authorization/remove-authorization
 import { MainComponent } from './main/main.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HomeComponent } from './home/home.component';
+import { AcceptAuthorizationComponent } from './authorization/accept-authorization/accept-authorization.component';
+import { RefuseAuthorizationComponent } from './authorization/refuse-authorization/refuse-authorization.component';
+import { AcceptHolidysComponent } from './holidays/accept-holidys/accept-holidys.component';
+import { RefuseHolidysComponent } from './holidays/refuse-holidys/refuse-holidys.component';
 
 
 @NgModule({
@@ -96,7 +100,11 @@ import { HomeComponent } from './home/home.component';
     DetailsTaskComponent,
     MainComponent,
     ToolbarComponent,
-    HomeComponent
+    HomeComponent,
+    AcceptAuthorizationComponent,
+    RefuseAuthorizationComponent,
+    AcceptHolidysComponent,
+    RefuseHolidysComponent
 
   ],
   imports: [
@@ -157,7 +165,11 @@ import { HomeComponent } from './home/home.component';
 
   AddAuthorizationComponent,
   ModifyAuthorizationComponent,
-  RemoveAuthorizationComponent]
+  RemoveAuthorizationComponent,
+  AcceptAuthorizationComponent,
+  RefuseAuthorizationComponent,
+  AcceptHolidysComponent,
+  RemoveHolidaysComponent]
 
 
 })

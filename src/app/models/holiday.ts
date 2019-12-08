@@ -4,7 +4,8 @@ export class Holiday {
   id: number;
   startDate: string;
   endDate: string;
-  isValidated: number;
+  status: number;
+  rejectionReason: string;
   user: User;
   constructor() {}
 }

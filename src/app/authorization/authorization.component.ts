@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {Authorization} from '../models/Authorization';
 import {AuthorizationService} from '../services/authorization.service';
 import {MatDialog, MatTableDataSource} from '@angular/material';
-import {ModifyProjectComponent} from '../projects/modify-project/modify-project.component';
 import {ModifyAuthorizationComponent} from './modify-authorization/modify-authorization.component';
 import {AddAuthorizationComponent} from './add-authorization/add-authorization.component';
 import {RemoveAuthorizationComponent} from './remove-authorization/remove-authorization.component';
 import {DataSource} from '@angular/cdk/table';
+import {AcceptAuthorizationComponent} from './accept-authorization/accept-authorization.component';
+import {RefuseAuthorizationComponent} from './refuse-authorization/refuse-authorization.component';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -54,5 +55,24 @@ export class AuthorizationComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialogAccept(idr): void {
+    const dialogRef = this.dialog.open(AcceptAuthorizationComponent, {
+      width: '400px',
+      data: {
+        id: idr
+      }
+    });
+    dialogRef.afterClosed().subscribe(r => this.ngOnInit());
+  }
+  openDialogRefuse(idr): void {
+    const dialogRef = this.dialog.open(RefuseAuthorizationComponent, {
+      width: '400px',
+      data: {
+        id: idr
+      }
+    });
+    dialogRef.afterClosed().subscribe(r => this.ngOnInit());
   }
 }

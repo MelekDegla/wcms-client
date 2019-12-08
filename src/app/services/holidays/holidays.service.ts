@@ -37,4 +37,10 @@ export class HolidaysService {
       headers: this.headers
     });
   }
+  validate(holiday: Holiday) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    return this.http.put(this.baseUrl + 'holidays/validate', holiday , {
+      headers: this.headers
+    });
+  }
 }
