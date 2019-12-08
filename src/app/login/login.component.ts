@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       // @ts-ignore
       localStorage.token = res.token;
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/main');
       this.userService.findUserWithToken().subscribe(result => {
         // @ts-ignore
         localStorage.username = result.username;
