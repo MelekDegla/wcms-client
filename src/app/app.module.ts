@@ -10,7 +10,7 @@ import {
   MAT_DATE_LOCALE, MatBadgeModule, MatBottomSheetModule,
   MatButtonModule,
   MatCardModule, MatCheckboxModule, MatDatepickerModule,
-  MatDialogModule, MatDialogRef,
+  MatDialogModule, MatDialogRef, MatExpansionModule,
   MatIconModule,
   MatInputModule, MatNativeDateModule, MatProgressBarModule, MatSnackBarModule,
   MatTableModule,
@@ -139,7 +139,8 @@ import { RefuseHolidysComponent } from './holidays/refuse-holidys/refuse-holidys
     MatCheckboxModule,
     MatBadgeModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   providers: [UserService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

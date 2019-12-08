@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 import {Login} from '../../models/Login';
-import  {User} from '../../models/User';
+import {User} from '../../models/User';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 
@@ -69,7 +69,13 @@ export class UserService {
   viewNotification() {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
 
-    return this.http.get(this.baseurl + 'notifs/viewed' , {headers: this.headers});
+    return this.http.get(this.baseurl + 'notifs/viewed' , );
+  }
+
+  changePassword(user) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    // @ts-ignore
+    return this.http.post(this.baseurl + 'password', user, {headers: this.headers});
   }
 
 }
