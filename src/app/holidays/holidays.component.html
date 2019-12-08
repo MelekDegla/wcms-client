@@ -30,8 +30,8 @@
     </ng-container>
 
     <ng-container matColumnDef="Status">
-      <th mat-header-cell *matHeaderCellDef> Status</th>
-      <td mat-cell *matCellDef="let element"> {{element.isValidated}} </td>
+      <th mat-header-cell *matHeaderCellDef> status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status == 0 ? 'inprogress': element.status == 1? 'accepted' : 'refused'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">

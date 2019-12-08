@@ -52,6 +52,7 @@ export class AddUserComponent implements OnInit {
   }
   ngOnInit() {
     this.user = new User();
+    this.user.roles = [];
   }
   add() {
     if (this.addForm.invalid) { return; }

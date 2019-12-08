@@ -109,6 +109,12 @@
 
     </mat-error>
   </mat-form-field>
+    <mat-checkbox (change)="user.roles.push('ADMIN')">
+      admin
+    </mat-checkbox>
+    <mat-checkbox (change)="user.roles.push('USER')">
+      User
+    </mat-checkbox>
   </form>
 </div>
 <div mat-dialog-actions align="end">

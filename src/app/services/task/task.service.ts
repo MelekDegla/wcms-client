@@ -63,4 +63,10 @@ export class TaskService {
       headers: this.headers
     });
   }
+  join(task) {
+    this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
+    return this.http.put(this.baseurl + 'tasks/join', task , {
+      headers: this.headers
+    });
+  }
 }

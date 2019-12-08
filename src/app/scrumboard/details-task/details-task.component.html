@@ -1,26 +1,39 @@
 <mat-progress-bar mode="indeterminate" *ngIf="loader"></mat-progress-bar>
+<div class="row" >
+  <div class="col-8">
+    <h1 mat-dialog-title>Details of task {{task.label}}</h1>
 
-<h1 mat-dialog-title>Details of task {{task.label}}</h1>
-<div mat-dialog-content>
+    <div mat-dialog-content>
+
+      <div  style="display: flex; flex-direction: column">
+        <span style="color: #334BAB">description :</span>
+        <pre>   {{task.description}}</pre>
+      </div>
+      <mat-form-field style="width: 100%" *ngIf="task.status== 0">
+        <mat-label>problem</mat-label>
+        <input matInput style="width: 100%" [(ngModel)]="task.problem">
+      </mat-form-field>
+    </div>
+    <button mat-flat-button (click)="modify()"  *ngIf="task.status== 0">save</button>
+      <span style="color: #334BAB">Attached files</span>
+      <div style="width: 100%; margin: 15px; display: flex; justify-content: space-between; min-height: 50px; padding: 15px; background:rgba(53,139,204,0.16)" *ngFor="let res of task.resources" >
+        <span>{{res.name}}</span> <a mat-flat-button href="{{res.url}}" download target="_blank" color="primary" > download</a>
+      </div>
+
+  </div>
+<div class="col-4">
   <input type="file" hidden  (change)="onFileChange($event.target.files)" name="file"  #fileInput>
-  <button mat-button (click)="fileInput.click()" >
-    <mat-icon style="transform: rotate(40deg)"  >attach_file</mat-icon> Add file
-  </button>
-  <div style="width: 100%; display: flex; justify-content: space-between"  *ngFor="let res of task.resources">
-    <span>{{res.name}}</span> <a mat-button href="{{res.url}}" download target="_blank" > download</a> </div>
+  <div style="display: flex; flex-direction: column; justify-content: space-around">
+    <button mat-button (click)="fileInput.click()" >
+      <mat-icon style="transform: rotate(40deg)"  >attach_file</mat-icon> Add file
+    </button>
+    <button mat-flat-button (click)="join()" >{{joined ? 'leave' : 'join'}}</button>
+  </div>
 
-  <mat-form-field style="width: 100%">
-    <mat-label>description</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="task.description">
-  </mat-form-field>
-  <mat-form-field style="width: 100%" *ngIf="task.status== 0">
-    <mat-label>problem</mat-label>
-    <input matInput style="width: 100%" [(ngModel)]="task.problem">
-  </mat-form-field>
+
 </div>
 
-<div mat-dialog-actions align="end">
-  <button mat-button >No Thanks</button>
-  <button mat-flat-button (click)="modify()" >Ok</button>
 </div>
+
+
 

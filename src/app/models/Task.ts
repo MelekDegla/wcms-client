@@ -11,5 +11,6 @@ export class Task {
     logs: Log[];
     problem: string;
     resources: Resource[];
+    usernames: string[];
     constructor() {}
 }

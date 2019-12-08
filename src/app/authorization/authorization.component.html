@@ -23,6 +23,11 @@
       <th mat-header-cell *matHeaderCellDef> reason </th>
       <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
     </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status == 0 ? 'inprogress': element.status == 1? 'accepted' : 'refused'}} </td>
+    </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="date">
@@ -44,8 +49,8 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element"> <button mat-icon-button color="primary" (click)="openDialogModify(element)"> <mat-icon>edit</mat-icon> </button>
         <button mat-icon-button color="warn" (click)="openDialogDelete(element.id)"> <mat-icon>delete</mat-icon> </button>
-        <button mat-flat-button color="primary" *ngIf="isAdmin " (click)="openDialogAccept(element)">accept</button>
-       <button mat-flat-button color="warn" *ngIf="isAdmin " (click)="openDialogRefuse(element)">reject</button>
+        <button mat-flat-button color="primary" *ngIf="isAdmin && element.status == 0" (click)="openDialogAccept(element)">accept</button>
+       <button mat-flat-button color="warn" *ngIf="isAdmin && element.status == 0" (click)="openDialogRefuse(element)">reject</button>
 
       </td>
 

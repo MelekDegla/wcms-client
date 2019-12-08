@@ -164,6 +164,7 @@ export class ScrumboardComponent implements OnInit {
     this.initializeWebSocketConnection();
   }
   orderTasks(res) {
+    this.project = res;
     // @ts-ignore
     this.problems = res.tasks.filter( t => t.status === 0);
     // @ts-ignore
@@ -198,7 +199,7 @@ export class ScrumboardComponent implements OnInit {
 
   openDialogDetails(id: number) {
     const dialogRef = this.dialog.open(DetailsTaskComponent, {
-      width: '400px',
+      width: '800px',
       data: {
         id,
         idproject: this.actR.snapshot.params.id

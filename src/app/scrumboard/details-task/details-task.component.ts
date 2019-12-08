@@ -13,6 +13,7 @@ export class DetailsTaskComponent implements OnInit {
   file: string;
   fileU: File;
   loader = false;
+  joined: boolean;
 
   constructor(private taskService: TaskService,
               @Inject(MAT_DIALOG_DATA) private data: any,
@@ -30,10 +31,17 @@ export class DetailsTaskComponent implements OnInit {
 
 
   }
-
+  join() {
+    console.log(this.task);
+    this.taskService.join(this.task).subscribe(res => {
+      console.log(res);
+      this.dialogRef.close();
+    });
+  }
   ngOnInit() {
     this.taskService.findById(this.data.id).subscribe(res => {
       this.task = res;
+      this.joined =  this.task.usernames.indexOf(localStorage.username) !== -1;
       console.log(this.task );
     });
   }
