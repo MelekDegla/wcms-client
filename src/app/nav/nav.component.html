@@ -4,7 +4,7 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="logoContainer justify-content-center" style="padding: 15px">
-      <div id="logo" style="padding-top: 20px">
+      <div id="logo" style="padding-top: 20px" routerLink="/main">
         <img src="/assets/logoWeCode.png" style="width: 100px">
       </div>
     </mat-toolbar>

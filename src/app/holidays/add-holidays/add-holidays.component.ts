@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Holiday} from '../../models/holiday';
 import {MatDialogRef} from '@angular/material';
 import {HolidaysService} from '../../services/holidays/holidays.service';
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-add-holidays',
@@ -17,6 +18,7 @@ export class AddHolidaysComponent implements OnInit {
   }
 
   add() {
+
     this.holidayService.add(this.holiday).subscribe(res => {
       this.dialogRef.close();
     });

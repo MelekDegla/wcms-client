@@ -1,4 +1,4 @@
-<mat-form-field class="mat-card-content">
+<mat-form-field class="mat-card-content example-full-width">
   <input matInput [matDatepicker]="picker" [(ngModel)]="holiday.startDate " placeholder="Choose a date">
   <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -7,6 +7,9 @@
   <input matInput  [matDatepicker]="picker1" placeholder="End Date" [(ngModel)]="holiday.endDate">
   <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
   <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input matInput  placeholder="Reason"  [(ngModel)]="holiday.reason">
 </mat-form-field>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="true" >No Thanks</button>

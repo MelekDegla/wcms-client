@@ -15,20 +15,29 @@
       </mat-form-field>
     </div>
     <button mat-flat-button (click)="modify()"  *ngIf="task.status== 0">save</button>
+    <hr>
       <span style="color: #334BAB">Attached files</span>
-      <div style="width: 100%; margin: 15px; display: flex; justify-content: space-between; min-height: 50px; padding: 15px; background:rgba(53,139,204,0.16)" *ngFor="let res of task.resources" >
-        <span>{{res.name}}</span> <a mat-flat-button href="{{res.url}}" download target="_blank" color="primary" > download</a>
+      <div style="width: 100%; margin: 15px; display: flex; justify-content: space-between; min-height: 50px; padding: 15px; background:rgba(53,139,204,0.16)" *ngFor="let res of task.resources" mat-list-item >
+        <span>     <mat-icon >note</mat-icon>{{res.name}}</span> <a mat-flat-button href="{{res.url}}" download target="_blank" color="primary" > download</a>
       </div>
 
   </div>
 <div class="col-4">
+  <h4 style="text-align: center">Options</h4>
   <input type="file" hidden  (change)="onFileChange($event.target.files)" name="file"  #fileInput>
-  <div style="display: flex; flex-direction: column; justify-content: space-around">
-    <button mat-button (click)="fileInput.click()" >
+  <div style="display: flex; flex-direction: column; justify-content: space-around; height: 150px; padding: 15px">
+    <button mat-flat-button color="primary" (click)="fileInput.click()" >
       <mat-icon style="transform: rotate(40deg)"  >attach_file</mat-icon> Add file
     </button>
-    <button mat-flat-button (click)="join()" >{{joined ? 'leave' : 'join'}}</button>
+    <button mat-flat-button (click)="join()" color="primary">{{joined ? 'leave' : 'join'}}</button>
   </div>
+  <hr>
+  <span style="color: #334BAB">Subscribed Users:  </span>
+  <mat-list>
+    <mat-list-item *ngFor="let name of task.usernames">
+      {{name}}
+    </mat-list-item>
+  </mat-list>
 
 
 </div>

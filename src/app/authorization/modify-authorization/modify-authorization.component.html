@@ -1,15 +1,20 @@
-  <mat-form-field class="mat-card-content">
-    <input matInput [matDatepicker]="picker" [(ngModel)]="auth.date" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="reason" value="reason" [(ngModel)]="auth.reason">
-  </mat-form-field>
-  <input type="time" [(ngModel)]="auth.beginhour">
-  <input type="time" [(ngModel)]="auth.endhour">
-  <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="true" >No Thanks</button>
-    <button mat-flat-button   (click)="modify()">Ok</button>
-  </div>
+<mat-form-field class="mat-card-content example-full-width">
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="auth.date">
+  <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="reason"  [(ngModel)]="auth.reason">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input type="time"  matInput placeholder="from" [(ngModel)]="auth.beginhour" class="example-full-width">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input type="time" placeholder="to" matInput [(ngModel)]="auth.endhour" class="example-full-width">
+</mat-form-field>
+<div mat-dialog-actions >
+  <button mat-button [mat-dialog-close]="true" >No Thanks</button>
+  <button mat-flat-button  (click)="modify()">Add</button>
+</div>
+
 

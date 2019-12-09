@@ -15,7 +15,7 @@ import {AcceptHolidysComponent} from './accept-holidys/accept-holidys.component'
 export class HolidaysComponent implements OnInit {
 
   holiday: [Holiday];
-  displayedColumns: string[] = ['username', 'Start Date', 'End Date', 'Status', 'actions'];
+  displayedColumns: string[] = ['username', 'reason', 'Status', 'Start Date', 'End Date',  'actions'];
   dataSource;
   isAdmin = localStorage.isAdmin === 'true';
   constructor(public dialog: MatDialog, private holidayService: HolidaysService) { }
