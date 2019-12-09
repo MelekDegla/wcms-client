@@ -43,7 +43,7 @@ export class ScrumboardComponent implements OnInit {
   task;
 
   private stompClient;
-  private serverUrl = 'http://localhost:8091/socket';
+  private serverUrl = environment.webservice.baseUrl + 'socket';
   isLoaded = false;
   isCustomSocketOpened = false;
   // @ts-ignore
