@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Task} from '../../models/task';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class TaskService {
   constructor(private http: HttpClient) {
   }
 
-  add(task: Task) {
+  add(task) {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
     return this.http.post(this.baseurl + 'tasks', task, {
       headers: this.headers
