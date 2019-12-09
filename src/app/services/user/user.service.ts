@@ -69,7 +69,7 @@ export class UserService {
   viewNotification() {
     this.headers = new HttpHeaders({Authorization: 'Bearer ' + localStorage.token});
 
-    return this.http.get(this.baseurl + 'notifs/viewed' , );
+    return this.http.get(this.baseurl + 'notifs/viewed' , {headers: this.headers});
   }
 
   changePassword(user) {
