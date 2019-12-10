@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   webservice: {
-    baseUrl: 'http://35.234.119.155:8091/'
+    baseUrl: 'http://35.246.139.234:8091/'
   }
 };
 
